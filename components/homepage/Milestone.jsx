@@ -76,7 +76,7 @@ const timelineEvents = [
 
 export default function AlternatingTimeline() {
   return (
-    <section className="bg-white py-16 px-4 md:px-8 font-sans">
+    <section className="bg-white py-16 pt-20 px-4 md:px-8 font-sans">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1b5e20] mb-16">
           Our Journey
