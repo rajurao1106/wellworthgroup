@@ -52,7 +52,7 @@ const Projects = () => {
       <div className="flex flex-col px-8 max-lg:px-4 md:flex-row justify-between items-start md:items-center mb-10 gap-4">
         <div>
           <h2 className="text-6xl max-lg:text-4xl leading-tight mb-4 font-[Bodoni_Moda] font-semibold text-slate-900 tracking-wide">
-            A Look at the  <span className="text-[#e3c77a] italic">Project</span>
+           Our Recent  <span className="text-[#7a9985] italic">Project</span>
           </h2>
           <p className="text-gray-500 text-base mb-4 font-light">
             Give your home a new look with these real estate ideas curated for
