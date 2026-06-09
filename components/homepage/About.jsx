@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import about from "@/public/homepage/about2.jpg";
+import about from "@/public/homepage/about3.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -9,7 +9,7 @@ const About3 = () => {
   // Updated with the new statistics
   const stats = [
     { value: "2000+", label: "Happy Families" },
-    { value: "25+", label: "Years of Trusted Development" },
+    { value: "30+", label: "Years of Trusted Development" },
     { value: "200 Ac+", label: "Land Developed in Raipur" },
     { value: "7 Days", label: "Registry in Just 7 Days" },
   ];
@@ -62,7 +62,7 @@ const About3 = () => {
             <br />
             <br />
             <h1 className="text-5xl font-[Bodoni_Moda] md:text-7xl leading-16">
-              <p>25+ Years in</p>
+              <p>30+ Years in</p>
               <span className="relative">Raipur</span>
               <span className="italic max-lg:left-10 font-[Playfair_Display] relative text-[#E3C77A]">
                 <br /> Real Estate

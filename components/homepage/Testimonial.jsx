@@ -29,6 +29,30 @@ const testimonials = [
     text: "As a first-time investor, I had a lot of questions. Their team was incredibly patient, guiding me through the future growth corridors of the city. I am thrilled with the appreciation value of my plot so far.",
     rating: 5,
   },
+  {
+    id: 4,
+    name: "Sneha & Kunal Kapoor",
+    role: "Luxury Villa Plot Owners",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&h=400&fit=crop",
+    text: "Finding a premium plot in a gated community was our priority. The team understood our needs perfectly and offered us a location that blends luxury with nature. Absolutely delighted!",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Rohan Gupta",
+    role: "Long-term Investor",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&fit=crop",
+    text: "The capital appreciation has been brilliant. Their extensive knowledge of upcoming development zones and infrastructure projects is spot on. I've already recommended them to my friends.",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Priya Sharma",
+    role: "Residential Plot Buyer",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&h=400&fit=crop",
+    text: "A fantastic experience from start to finish. We were looking for a safe and secure place to build our dream home, and they delivered exactly what was promised with zero hassle.",
+    rating: 4,
+  },
 ];
 
 export default function TestimonialSection() {
@@ -42,7 +66,7 @@ export default function TestimonialSection() {
     
     const timer = setInterval(() => {
       handleNext();
-    }, 5000); // Changes slide every 5 seconds
+    }, 5000); 
 
     return () => clearInterval(timer);
   }, [currentIndex, isAutoPlaying]);
@@ -59,6 +83,15 @@ export default function TestimonialSection() {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
+  };
+
+  // Get exactly 3 visible testimonials for the sliding window
+  const getVisibleTestimonials = () => {
+    const visible = [];
+    for (let i = 0; i < 3; i++) {
+      visible.push(testimonials[(currentIndex + i) % testimonials.length]);
+    }
+    return visible;
   };
 
   const variants = {
@@ -95,16 +128,13 @@ export default function TestimonialSection() {
 
         {/* Carousel Container */}
         <div 
-          className="relative max-w-5xl mx-auto"
+          className="relative w-full mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          {/* Main Card */}
-          <div className="relative h-auto min-h-[500px] sm:min-h-[420px] md:min-h-[380px] w-full bg-white shadow-xl rounded-2xl md:rounded-3xl border border-gray-100 p-8 md:p-12 lg:p-16 overflow-hidden flex items-center">
+          {/* Main Display Area */}
+          <div className="relative min-h-[400px] w-full flex items-center justify-center">
             
-            {/* Faded Quote Icon in Background */}
-            <Quote className="absolute top-8 right-8 w-32 h-32 text-gray-50 opacity-50 rotate-12 pointer-events-none" />
-
             <AnimatePresence mode="popLayout" initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -117,48 +147,59 @@ export default function TestimonialSection() {
                   x: { type: "spring", stiffness: 260, damping: 28 },
                   opacity: { duration: 0.25 },
                 }}
-                className="w-full flex flex-col md:flex-row items-center gap-8 md:gap-12"
+                className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
               >
-                {/* Image Section */}
-                <div className="w-24 h-24 md:w-48 md:h-48 shrink-0 relative">
-                  <div className="absolute inset-0 bg-[#E3C77A] rounded-full translate-x-2 translate-y-2 opacity-20"></div>
-                  <img
-                    src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].name}
-                    className="w-full h-full object-cover rounded-full border-4 border-white shadow-md relative z-10"
-                  />
-                </div>
+                {getVisibleTestimonials().map((t, index) => (
+                  <div 
+                    key={`${currentIndex}-${t.id}`} 
+                    // Hide 2nd and 3rd cards on smaller screens for responsive behavior
+                    className={`bg-white shadow-xl rounded-2xl border border-gray-100 p-8 flex flex-col h-full relative overflow-hidden transition-all duration-300
+                      ${index === 1 ? 'hidden md:flex' : ''} 
+                      ${index === 2 ? 'hidden lg:flex' : ''}
+                    `}
+                  >
+                    {/* Faded Quote Icon in Background */}
+                    <Quote className="absolute top-6 right-6 w-16 h-16 text-gray-50 opacity-50 rotate-12 pointer-events-none" />
 
-                {/* Text Section */}
-                <div className="flex-1 text-center md:text-left flex flex-col justify-center">
-                  {/* Star Rating */}
-                  <div className="flex justify-center md:justify-start gap-1 mb-6">
-                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-[#E3C77A] text-[#E3C77A]" />
-                    ))}
-                  </div>
+                    {/* Author Info (Top) */}
+                    <div className="flex items-center gap-4 mb-6 relative z-10">
+                      <div className="w-16 h-16 shrink-0 relative">
+                        <div className="absolute inset-0 bg-[#E3C77A] rounded-full translate-x-1 translate-y-1 opacity-20"></div>
+                        <img
+                          src={t.image}
+                          alt={t.name}
+                          className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm relative z-10"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-[#2D2D2D] leading-tight">
+                          {t.name}
+                        </h4>
+                        <p className="text-[#8FAF9A] font-medium text-sm mt-1">
+                          {t.role}
+                        </p>
+                      </div>
+                    </div>
 
-                  {/* Review Text */}
-                  <p className="text-gray-600 text-lg md:text-xl lg:text-2xl italic leading-relaxed mb-8">
-                    "{testimonials[currentIndex].text}"
-                  </p>
+                    {/* Star Rating */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(t.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#E3C77A] text-[#E3C77A]" />
+                      ))}
+                    </div>
 
-                  {/* Author Info */}
-                  <div>
-                    <h4 className="text-xl font-bold text-[#2D2D2D]">
-                      {testimonials[currentIndex].name}
-                    </h4>
-                    <p className="text-[#8FAF9A] font-medium mt-1">
-                      {testimonials[currentIndex].role}
+                    {/* Review Text */}
+                    <p className="text-gray-600 text-base italic leading-relaxed flex-1">
+                      "{t.text}"
                     </p>
                   </div>
-                </div>
+                ))}
               </motion.div>
             </AnimatePresence>
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-center items-center gap-6 mt-10">
+          <div className="flex justify-center items-center gap-6 mt-12">
             <motion.button
               whileTap={{ scale: 0.93 }}
               onClick={handlePrev}

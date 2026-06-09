@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Bodoni_Moda } from "next/font/google";
 import { motion } from "framer-motion";
-import hero4 from "@/public/homepage/hero4.jpg";
+import hero4 from "@/public/homepage/hero5.png";
 
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
@@ -84,27 +84,31 @@ export default function Hero() {
                 remaining.
               </motion.p>
 
-              {/* Buttons: Stacked on mobile, side-by-side on sm+ screens */}
+           {/* Improved CTA Hierarchy */}
               <motion.div
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
               >
+                {/* Primary Action: Solid Background with subtle shadow */}
                 <motion.button
                   id="property"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-colors duration-300 shadow-lg w-full sm:w-auto text-center"
+                  className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3.5 rounded-md transition-all duration-300 shadow-lg shadow-[#8FAF9A]/30 w-full sm:w-auto text-center font-medium"
                 >
                   Discover Properties
                 </motion.button>
+                
+                {/* Secondary Action: Outline / Ghost Button */}
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-colors duration-300 shadow-lg w-full sm:w-auto text-center"
+                  className="bg-transparent border-2 border-[#8FAF9A] text-white hover:bg-[#8FAF9A]/10 px-8 py-3.5 rounded-md transition-all duration-300 w-full sm:w-auto text-center font-medium backdrop-blur-sm"
                 >
                   Call Now for Pricing
                 </motion.button>
               </motion.div>
+
             </motion.div>
           </div>
         </section>
