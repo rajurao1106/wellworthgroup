@@ -75,8 +75,8 @@ export default function Navbar() {
                   className="object-cover"
                 />
               </div>
-              <span className="font-bold text-gray-900 text-lg tracking-tight hidden sm:block">
-                Wellworth
+              <span className="font-semibold text-gray-900 text-lg tracking-tight hidden sm:block">
+                Wellworth Group
               </span>
             </Link>
 

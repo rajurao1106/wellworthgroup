@@ -6,10 +6,8 @@ import HowItWorks from "@/components/homepage/HowItWorks";
 import AlternatingTimeline from "@/components/homepage/Milestone";
 import InteriorInspiration from "@/components/homepage/Projects";
 import SakuntalaPlotsSection from "@/components/homepage/SakuntalaPlotsSection";
-
 import ServicesStackSection from "@/components/homepage/Services";
 import TestimonialSection from "@/components/homepage/Testimonial";
-
 import React from "react";
 
 export default function page() {
@@ -24,7 +22,6 @@ export default function page() {
       <ServicesStackSection />
       <AlternatingTimeline />
       <TestimonialSection />
-
       {/* <HowItWorks /> */}
       <CTA2 />
     </main>
