@@ -29,7 +29,7 @@ const About3 = () => {
             className={`relative group overflow-hidden flex justify-between h-full`}
           >
             <h1 className="relative py-10 font-light tracking-widest items-end">
-              <p className="absolute text-6xl max-lg:text-5xl font-bold font-[Bodoni_Moda] text-[#E3C77A]">
+              <p className="absolute text-6xl max-lg:text-5xl font-bold font-[Bodoni_Moda] text-[#7a9985]">
                 Premium Plots
               </p>
               <p className="[writing-mode:vertical-lr] text-xs max-lg:text-[8px] h-[100%] text-right py-10 max-lg:py-8">
@@ -56,7 +56,7 @@ const About3 = () => {
           className="lg:col-span-5 space-y-8"
         >
           <div className="space-y-4">
-            <span className="text-gray-400 text-sm tracking-widest uppercase">
+            <span className="text-[#7a9985] text-sm tracking-widest uppercase">
               About Wellworth Group
             </span>
             <br />
