@@ -17,7 +17,7 @@ const ContactInfoItem = ({ icon, title, lines }) => (
       <h4 className="text-gray-900 font-bold text-lg mb-2 relative pl-3 border-l-[3px] border-[#82C341] leading-none">
         {title}
       </h4>
-      <div className="space-y-1">
+      <div className="space-y-2">
         {lines.map((line, index) => (
           <p key={index} className="text-gray-500 text-sm leading-relaxed">
             {line}
@@ -30,7 +30,7 @@ const ContactInfoItem = ({ icon, title, lines }) => (
 
 const ContactSection = () => {
   return (
-    <section className="pt-20 pb-0 font-sans bg-[#fafafa]">
+    <section className="pt-20 pt-30 pb-0 font-sans bg-[#fafafa]">
       {/* Top Grid: Location & Form */}
       <div className="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
         
@@ -40,7 +40,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-4 lg:pr-8"
+          className="lg:col-span-5 lg:pr-8" // Slightly expanded column to fit addresses better
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             Location Details
@@ -51,8 +51,11 @@ const ContactSection = () => {
 
           <div className="space-y-10">
             <ContactInfoItem
-              title="Address"
-              lines={["Wellworth Group", "Raipur, Chhattisgarh", "India."]}
+              title="Addresses"
+              lines={[
+                <span key="branch"><strong>Branch:</strong> 3018 Currency Tower, Third Floor, V.I.P Chowk Raipur, Chhattisgarh</span>,
+                <span key="ho"><strong>HO:</strong> B Wing, One, G Block, BKC, Bandra (E), Mumbai, Maharashtra 400 051</span>
+              ]}
               icon={
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -62,8 +65,11 @@ const ContactSection = () => {
             />
 
             <ContactInfoItem
-              title="Phone"
-              lines={["+91 123 456 7890", "+91 098 765 4321"]}
+              title="Phone & WhatsApp"
+              lines={[
+                "Call: +91 9826801809 / +91 6260096563",
+                "WhatsApp: +91 8878309000"
+              ]}
               icon={
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
@@ -73,7 +79,7 @@ const ContactSection = () => {
 
             <ContactInfoItem
               title="Email"
-              lines={["contact@wellworthgroup.in", "info@wellworthgroup.in"]}
+              lines={["wellworthrealty@gmail.com"]}
               icon={
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -83,7 +89,7 @@ const ContactSection = () => {
 
             <ContactInfoItem
               title="Working Hours"
-              lines={["Monday - Saturday", "10:00 - 20:00"]}
+              lines={["Monday - Saturday", "10:00 AM - 7:00 PM"]}
               icon={
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
@@ -99,7 +105,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-8 bg-white p-8 md:p-14 shadow-[0_10px_40px_rgba(0,0,0,0.06)] rounded-sm relative z-10"
+          className="lg:col-span-7 bg-white p-8 md:p-14 shadow-[0_10px_40px_rgba(0,0,0,0.06)] rounded-sm relative z-10"
         >
           <h3 className="text-3xl font-bold text-gray-900 mb-8">
             Contact With Us
