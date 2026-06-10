@@ -42,7 +42,7 @@ const ScrollToTop = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-8 right-8 md:bottom-24 md:right-[27px] z-[90] p-3  bg-[#8FAF9A] text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:bg-[#7a9985] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8FAF9A]"
+          className="fixed bottom-24 max-lg:right-6 right-8 md:bottom-24 md:right-[27px] z-[90] p-3  bg-[#8FAF9A] text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:bg-[#7a9985] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8FAF9A]"
         >
           <ChevronUp size={28} strokeWidth={2.5} />
         </motion.button>
