@@ -120,7 +120,6 @@ const OurMembers = () => {
                   />
                 */}
 
-               
               </div>
 
               {/* Text Information */}
