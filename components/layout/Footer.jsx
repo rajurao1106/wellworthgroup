@@ -38,7 +38,7 @@ const Footer = () => {
                 href={"/property"}
                 className="hover:text-white transition-colors duration-300"
               >
-                Sakuntala — Old Dhamtari Road
+                Vardhman Nagar — Devpuri
               </a>
             </li>
             <li>
@@ -46,7 +46,8 @@ const Footer = () => {
                 href={"/property"}
                 className="hover:text-white transition-colors duration-300"
               >
-                Wellworth Heights — VIP Road Corridor
+               Nanes Nagar — Bhatagaon
+
               </a>
             </li>
             <li>
@@ -54,7 +55,7 @@ const Footer = () => {
                 href={"/property"}
                 className="hover:text-white transition-colors duration-300"
               >
-                Wellworth Green Valley — Ring Road No. 1
+           Arihant Vihar — Dunda
               </a>
             </li>
             <li>
@@ -62,25 +63,11 @@ const Footer = () => {
                 href={"/property"}
                 className="hover:text-white transition-colors duration-300"
               >
-                Wellworth Prestige — Kachna
+               Wellworth City — Hirapur
               </a>
             </li>
-            <li>
-              <a
-                href={"/property"}
-                className="hover:text-white transition-colors duration-300"
-              >
-                Wellworth Amanaka — Amanaka Road
-              </a>
-            </li>
-            <li>
-              <a
-                href={"/property"}
-                className="hover:text-white transition-colors duration-300"
-              >
-                Wellworth Sarona — Sarona
-              </a>
-            </li>
+           
+          
           </ul>
         </div>
 
@@ -148,41 +135,8 @@ const Footer = () => {
               V.I.P Chowk Raipur, Chhattisgarh
             </p>
 
-            {/* HO Address */}
-            <p className="leading-relaxed">
-              <strong>Head Office:</strong>
-              <br />
-              B Wing, One, G Block, BKC,
-              <br />
-              Bandra (E), Mumbai, MH 400 051
-            </p>
-
             {/* Contact Details */}
             <div className="flex flex-col gap-2 mt-2">
-              <div className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-4 h-4 text-[#d92d7b]"
-                >
-                  <path d="M11.953 2C6.465 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.493 2 11.953 2zM16.2 16.5l-2.1.8c-.3.1-.7.1-1-.1-2.2-1.2-4-3-5.2-5.2-.2-.3-.2-.7-.1-1l.8-2.1c.2-.4.6-.6 1-.5l2.1.4c.4.1.7.5.8.9l.4 1.9c.1.4-.1.8-.4 1l-1.2.9c.7 1.5 1.9 2.7 3.4 3.4l.9-1.2c.3-.3.7-.4 1-.4l1.9.4c.4.1.7.4.9.8l.4 2.1c.1.4-.1.9-.6 1.1z" />
-                </svg>
-                <a
-                  href="tel:+919826801809"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  9826801809
-                </a>
-                <span>/</span>
-                <a
-                  href="tel:+916260096563"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  6260096563
-                </a>
-              </div>
-
               <div className="flex items-center gap-2">
                 <a
                   href="https://wa.me/918878309000"

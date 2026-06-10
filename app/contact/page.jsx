@@ -53,8 +53,7 @@ const ContactSection = () => {
             <ContactInfoItem
               title="Addresses"
               lines={[
-                <span key="branch"><strong>Branch:</strong> 3018 Currency Tower, Third Floor, V.I.P Chowk Raipur, Chhattisgarh</span>,
-                <span key="ho"><strong>HO:</strong> B Wing, One, G Block, BKC, Bandra (E), Mumbai, Maharashtra 400 051</span>
+                <span key="branch">3018 Currency Tower, Third Floor, V.I.P Chowk Raipur, Chhattisgarh</span>,
               ]}
               icon={
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -65,10 +64,10 @@ const ContactSection = () => {
             />
 
             <ContactInfoItem
-              title="Phone & WhatsApp"
+              title="WhatsApp Number"
               lines={[
-                "Call: +91 9826801809 / +91 6260096563",
-                "WhatsApp: +91 8878309000"
+               
+                "+91 8878309000"
               ]}
               icon={
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -153,7 +152,7 @@ const ContactSection = () => {
       >
         {/* Replace the 'src' URL with your exact Google Maps Embed URL for Wellworth Group */}
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118983.39803277713!2d81.5471415053641!3d21.261895646197148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dda23be28229%3A0x163ee120469e2366!2sRaipur%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1413.2481759462678!2d81.67869021757528!3d21.238646151007664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dd3a6a311c0d%3A0xfa933870608a6546!2s5085%2C%20VIP%20Rd%2C%20Vishal%20Nagar%2C%20Raipur%2C%20Chhattisgarh%20492001!5e0!3m2!1sen!2sin!4v1781088385829!5m2!1sen!2sin"
           width="100%"
           height="100%"
           style={{ border: 0 }}
