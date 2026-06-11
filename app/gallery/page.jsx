@@ -3,6 +3,14 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import gallery1 from "@/public/gallery/gallery1.png"
+import gallery2 from "@/public/gallery/gallery2.jpeg"
+import gallery3 from "@/public/gallery/gallery3.jpeg"
+import gallery4 from "@/public/gallery/gallery4.jpeg"
+import gallery5 from "@/public/gallery/gallery5.jpeg"
+import gallery6 from "@/public/gallery/gallery6.jpeg"
+import gallery7 from "@/public/gallery/gallery7.jpeg"
+
 
 // --- Plot/Land specific Gallery Data ---
 const galleryData = [

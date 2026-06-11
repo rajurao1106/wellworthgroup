@@ -3,38 +3,42 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import rajendra from "@/public/about/rajendra.jpg"
+import devendra from "@/public/about/devendra.jpeg"
+import dinesh from "@/public/about/dinesh.jpeg"
+import rishabh from "@/public/about/rishabh.jpeg"
+import akash from "@/public/about/akash.png"
 
-// Team Data based on your provided structure
 const teamData = [
   {
     id: 1,
     name: "Rajendra Kumar Jain",
     role: "Founder, Chairman & Managing Director",
-    image: "/team/rajendra.jpg", // Replace with actual image path
+    image: rajendra, // Replace with actual image path
   },
   {
     id: 2,
     name: "Devendra Kumar Jain",
     role: "Director",
-    image: "/team/devendra.jpg",
+    image: devendra,
   },
   {
     id: 3,
     name: "Rishabh Jain",
     role: "Chief Operating Officer (COO)",
-    image: "/team/rishabh.jpg",
+    image: rishabh,
   },
   {
     id: 4,
     name: "Akash Nayak",
     role: "Business Development Manager",
-    image: "/team/akash.jpg",
+    image: akash,
   },
   {
     id: 5,
     name: "Dinesh Sahu",
     role: "Relationship Manager",
-    image: "/team/dinesh.jpg",
+    image: dinesh,
   },
 ];
 
@@ -110,15 +114,15 @@ const OurMembers = () => {
                   </svg>
                 </div>
                 
-                {/* 
-                  Uncomment this when you have the actual images in your public folder 
+                
+                 
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-cover transition-all duration-500"
                   />
-                */}
+               
 
               </div>
 

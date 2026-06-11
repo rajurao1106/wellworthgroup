@@ -4,60 +4,108 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import project1 from "@/public/homepage/project1.png"
+import project2 from "@/public/homepage/project2.jpg"
+import project3 from "@/public/homepage/project3.jpg"
+import project4 from "@/public/homepage/project4.png"
+import project5 from "@/public/homepage/project5.png"
 
 const properties = [
   {
     id: 1,
     tag: null,
-    highlight: "ONLY 12 PLOTS REMAINING",
+    highlight: "COMPLETED PROJECT",
     priceInfo: "Price on Request",
-    title: "SAKUNTALA",
-    details: "Old Dhamtari Road, Raipur ",
-    foot: "1,000 - 2,400 sq.ft.",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800",
+    title: "VARDHMAN NAGAR",
+    details: "Devpuri, Raipur, Chhattisgarh",
+    foot: "Premium Plots",
+    image: project1,
   },
   {
     id: 2,
     tag: null,
-    highlight: "JOIN WAITLIST FOR NEXT PHASE",
+    highlight: "COMPLETED PROJECT",
     priceInfo: "Exclusive Pricing Available",
-    title: "WELLWORTH HEIGHTS",
-    details: "VIP Road Corridor, Raipur",
-    foot: "1,500 sq.ft.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800",
+    title: "NANES NAGAR",
+    details: "Bhatagaon, Raipur",
+    foot: "Residential Area",
+    image: project2,
   },
   {
     id: 3,
     tag: null,
-    highlight: "LIMITED PLOTS — HIGH DEMAND PROJECT",
+    highlight: "COMPLETED PROJECT",
     priceInfo: "Call for Best Price",
-    title: "WELLWORTH GREEN VALLEY",
-    details: "Ring Road No. 1, Raipur",
-    foot: "1,200 sq.ft.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800",
+    title: "ARIHANT VIHAR",
+    details: "Dunda, Raipur",
+    foot: "Residential Plots",
+    image: project3,
   },
   {
     id: 4,
-    tag: "FEW LEFT",
-    tagColor: "bg-[#b8860b]",
-    highlight: "ONLY 5 PLOTS LEFT",
+    tag: null,
+    highlight: "COMPLETED PROJECT",
     priceInfo: "Price on Request",
-    title: "WELLWORTH PRESTIGE",
-    details: "Kachna, Raipur",
-    foot: "2,400 sq.ft.",
-    image: "https://images.unsplash.com/photo-1477322524744-0eece9e79f40?auto=format&fit=crop&q=80&w=800",
+    title: "WELLWORTH CITY",
+    details: "Hirapur, Raipur",
+    foot: "Township Project",
+    image: project4,
   },
   {
     id: 5,
-    tag: "READY TO REGISTER",
-    tagColor: "bg-green-700",
-    highlight: "IMMEDIATE POSSESSION AVAILABLE",
-    priceInfo: "Call for Best Price",
-    title: "WELLWORTH AMANAKA",
-    details: "Amanaka Road, Raipur",
-    foot: "2,000 sq.ft.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800",
+    tag: "UPCOMING",
+    tagColor: "bg-blue-700",
+    highlight: "UPCOMING PROJECT",
+    priceInfo: "Booking Opening Soon",
+    title: "SHANTIKUNJ PHASE 1 & 2",
+    details: "Raipur",
+    foot: "New Launch",
+    image: project5,
   },
+  {
+    id: 6,
+    tag: "UPCOMING",
+    tagColor: "bg-blue-700",
+    highlight: "UPCOMING PROJECT",
+    priceInfo: "Exclusive Launch",
+    title: "WELLWORTH HEIGHT KAMAL VIHAR",
+    details: "Kamal Vihar, Raipur",
+    foot: "Modern Apartments",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    id: 7,
+    tag: "UPCOMING",
+    tagColor: "bg-blue-700",
+    highlight: "UPCOMING PROJECT",
+    priceInfo: "Price on Request",
+    title: "WELLWORTH TOWER DEVPURI",
+    details: "Devpuri, Raipur",
+    foot: "Premium Residency",
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    id: 8,
+    tag: "COMMERCIAL",
+    tagColor: "bg-purple-700",
+    highlight: "UPCOMING COMMERCIAL",
+    priceInfo: "Express Interest",
+    title: "WELLWORTH MALL",
+    details: "Kondagaon",
+    foot: "Commercial Spaces",
+    image: "https://images.unsplash.com/photo-1477322524744-0eece9e79f40?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    id: 9,
+    tag: "MEGA PROJECT",
+    tagColor: "bg-green-700",
+    highlight: "28.50 ACRE RESIDENTIAL PROJECT",
+    priceInfo: "Pre-Launch Offers",
+    title: "ACACIA PREMIUM RESIDENTIAL PROJECT",
+    details: "Raipur",
+    foot: "28.50 Acre Township",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800",
+  }
 ];
 
 const PropertyCard = ({ property }) => {
@@ -94,7 +142,6 @@ const PropertyCard = ({ property }) => {
         </p>
 
         <div className="mt-auto flex justify-end items-center pt-4 border-t border-gray-100">
-          {/* Link using exactly the property title */}
           <Link href={`/property/${property.title}`} className="w-full">
             <button className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white w-full py-2 transition-all duration-300 shadow-lg">
               View Property
@@ -108,7 +155,7 @@ const PropertyCard = ({ property }) => {
 
 export default function FeaturedProperties() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [direction, setDirection] = useState(0);
 
   const nextSlide = () => {
     setDirection(1);
@@ -131,7 +178,6 @@ export default function FeaturedProperties() {
     properties[(currentIndex + 2) % properties.length],
   ];
 
-  // Animation configuration variables
   const slideVariants = {
     enter: (dir) => ({
       x: dir > 0 ? 30 : -30,
@@ -153,10 +199,10 @@ export default function FeaturedProperties() {
         <div className="flex flex-col px-8 max-lg:px-4 md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
             <h2 className="text-6xl max-lg:text-4xl leading-tight mb-4 font-[Bodoni_Moda] font-semibold text-slate-900 tracking-wide">
-              Featured <span className="text-[#7a9985] italic">Properties</span>
+              Our <span className="text-[#7a9985] italic">Projects</span>
             </h2>
             <p className="text-gray-500 text-base mb-4 font-light">
-              Give your home a new look with these real estate ideas curated for you
+              Discover our completed and upcoming premium developments
             </p>
           </div>
           <button className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-all duration-300 shadow-lg">
