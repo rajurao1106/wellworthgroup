@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 const About3 = () => {
   // Updated with the new statistics
   const stats = [
-    { value: "2000+", label: "Happy Families" },
-    { value: "30+", label: "Years of Trusted Development" },
-    { value: "200 Ac+", label: "Land Developed in Raipur" },
+    { value: "2900+", label: "Happy Families" },
+    { value: "30+", label: "Years (Since 1996)" },
+    { value: "300 Ac+", label: "Land Developed in Raipur" },
     { value: "7 Days", label: "Registry in Just 7 Days" },
   ];
 
@@ -29,7 +29,7 @@ const About3 = () => {
             className={`relative group overflow-hidden flex justify-between h-full`}
           >
             <h1 className="relative py-10 font-light tracking-widest items-end">
-              <p className="absolute text-6xl max-lg:text-5xl font-bold font-[Bodoni_Moda] text-[#7a9985]">
+              <p className="absolute text-6xl max-lg:text-5xl font-bold font-[Bodoni_Moda] text-[#E3C77A]">
                 Premium Plots
               </p>
               <p className="[writing-mode:vertical-lr] text-xs max-lg:text-[8px] h-[100%] text-right py-10 max-lg:py-8">
@@ -64,7 +64,7 @@ const About3 = () => {
             <h1 className="text-5xl font-[Bodoni_Moda] md:text-7xl leading-16">
               <p>30+ Years in</p>
               <span className="relative">Raipur</span>
-              <span className="italic max-lg:left-10 font-[Playfair_Display] relative text-[#E3C77A]">
+              <span className="italic max-lg:left-10 font-[Playfair_Display] relative text-[#7a9985] ">
                 <br /> Real Estate
               </span>
             </h1>
