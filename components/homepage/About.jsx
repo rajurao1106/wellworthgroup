@@ -6,12 +6,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const About3 = () => {
-  // Updated with the new statistics
+  
   const stats = [
-    { value: "2900+", label: "Happy Families" },
+    { value: "2900+", label: "Members Served" },
     { value: "30+", label: "Years (Since 1996)" },
-    { value: "300 Ac+", label: "Land Developed in Raipur" },
-    { value: "7 Days", label: "Registry in Just 7 Days" },
+    { value: "300 Ac+", label: "Land Developed" },
+  { value: "14", label: "Total Projects (9 Comp. + 5 Upc.)" },
   ];
 
   return (
@@ -85,7 +85,7 @@ const About3 = () => {
           <div className="grid grid-cols-2 gap-6 pt-6 border-t border-gray-200">
             {stats.map((stat, index) => (
               <div key={index} className="space-y-1">
-                <h3 className="text-3xl lg:text-4xl font-bold text-[#E3C77A] font-[Bodoni_Moda]">
+                <h3 className="text-3xl lg:text-4x  font-bold text-[#E3C77A] font-[Bodoni_Moda]">
                   {stat.value}
                 </h3>
                 <p className="text-xs text-gray-500 uppercase tracking-widest">

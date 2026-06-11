@@ -119,7 +119,7 @@ export default function TestimonialSection() {
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-4xl font-[Bodoni_Moda] md:text-5xl lg:text-6xl font-bold text-[#2D2D2D] mb-4">
-            Stories of <span className="text-[#E3C77A] italic">Trust</span>
+            Stories of <span className="text-[#7a9985] italic">Trust</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto">
             Don't just take our word for it. Hear from our clients who found their perfect investment with us.
@@ -184,7 +184,7 @@ export default function TestimonialSection() {
                     {/* Star Rating */}
                     <div className="flex gap-1 mb-4">
                       {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#E3C77A] text-[#E3C77A]" />
+                        <Star key={i} className="w-4 h-4 fill-[#E3C77A]  text-[#E3C77A]" />
                       ))}
                     </div>
 

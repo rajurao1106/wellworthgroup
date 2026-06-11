@@ -77,7 +77,7 @@ const PropertyCard = ({ property }) => {
       </div>
 
       <div className="p-5 flex flex-col flex-grow">
-        <p className="text-[#e3c77a] text-[10px] font-bold tracking-wider mb-2 uppercase">
+        <p className="text-[#7a9985] text-[10px] font-bold tracking-wider mb-2 uppercase">
           {property.highlight}
         </p>
         <h3 className="text-[19px] font-bold text-gray-800 mb-1 leading-tight">
@@ -153,7 +153,7 @@ export default function FeaturedProperties() {
         <div className="flex flex-col px-8 max-lg:px-4 md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
             <h2 className="text-6xl max-lg:text-4xl leading-tight mb-4 font-[Bodoni_Moda] font-semibold text-slate-900 tracking-wide">
-              Featured <span className="text-[#e3c77a] italic">Properties</span>
+              Featured <span className="text-[#7a9985] italic">Properties</span>
             </h2>
             <p className="text-gray-500 text-base mb-4 font-light">
               Give your home a new look with these real estate ideas curated for you

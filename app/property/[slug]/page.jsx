@@ -264,7 +264,7 @@ export default async function PropertyDetail({ params }) {
             <h1 className="text-4xl md:text-5xl font-serif text-black mb-3">
               {property.title}
             </h1>
-            <div className="flex items-center text-[#E3C77A] text-sm md:text-base">
+            <div className="flex items-center text-[#7a9985] text-sm md:text-base">
               <MapPin className="w-4 h-4 mr-1.5 " />
               {property.location}
             </div>
@@ -273,7 +273,7 @@ export default async function PropertyDetail({ params }) {
           {/* Right Side: Pricing and Actions */}
           <motion.div variants={fadeInUp} className="flex-none text-left md:text-right w-full md:w-auto mt-4 md:mt-0">
             <div className="text-gray-600 mb-1">{property.priceSubtext}</div>
-            <div className="text-4xl md:text-5xl font-semibold text-[#E3C77A] mb-6">
+            <div className="text-4xl md:text-5xl font-semibold text-[#7a9985] mb-6">
               {property.priceText}
             </div>
             <div className="flex items-center justify-start md:justify-end gap-5 text-sm font-medium text-gray-800">
