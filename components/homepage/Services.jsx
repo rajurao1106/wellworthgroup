@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, ShieldCheck, Hammer, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -35,11 +36,10 @@ export default function WhyChooseUsCards() {
   return (
     <section className="bg-[#F2F4EB] py-20 px-6 font-sans text-[#2D2D2D]">
       <div className="max-w-7xl mx-auto">
-        
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <div className="max-w-2xl">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -47,26 +47,30 @@ export default function WhyChooseUsCards() {
             >
               Why Choose Us?
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="text-gray-600 text-lg"
             >
-              Our commitment goes beyond just selling land. Discover the unique benefits that set us apart and ensure you have the best experience on your investment journey.
+              Our commitment goes beyond just selling land. Discover the unique
+              benefits that set us apart and ensure you have the best experience
+              on your investment journey.
             </motion.p>
           </div>
-          
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden md:block bg-[#2A3C2A] text-white px-8 py-3 rounded-full font-medium hover:bg-[#1f2d1f] transition-colors"
-          >
-            Know More
-          </motion.button>
+
+          <Link href="/contact">
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden md:block bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 rounded-full font-medium transition-colors"
+            >
+              Know More
+            </motion.button>
+          </Link>
         </div>
 
         {/* Cards Grid */}
@@ -78,35 +82,27 @@ export default function WhyChooseUsCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`flex flex-col p-8 rounded-[2rem] shadow-sm ${
-                service.isHighlighted 
-                  ? "bg-[#2A3C2A] text-white" 
-                  : "bg-[#E3E8D7] text-[#2D2D2D]"
-              }`}
+              className={`flex flex-col group p-8 rounded-[2rem] shadow-sm hover:bg-[#2A3C2A] hover:text-white bg-[#E3E8D7] text-[#2D2D2D]`}
             >
               {/* Icon */}
-              <div className="mb-6 opacity-90">
-                {service.icon}
-              </div>
+              <div className="mb-6 opacity-90">{service.icon}</div>
 
               {/* Text Content */}
               <h3 className="text-xl font-bold mb-4 leading-snug">
                 {service.title}
               </h3>
-              <p className={`text-sm md:text-base mb-8 flex-grow leading-relaxed ${
-                service.isHighlighted ? "text-gray-300" : "text-gray-600"
-              }`}>
+              <p
+                className={`text-sm md:text-base mb-8 flex-grow leading-relaxed group-hover:text-white text-gray-600 ${
+                  service.isHighlighted ? "" : ""
+                }`}
+              >
                 {service.desc}
               </p>
 
               {/* Card Button */}
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                className={`self-start px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
-                  service.isHighlighted
-                    ? "bg-[#455A45] hover:bg-[#587058] text-white"
-                    : "bg-[#2A3C2A] hover:bg-[#1f2d1f] text-white"
-                }`}
+                className={`self-start px-6 py-2.5 rounded-full text-sm text-white font-medium bg-[#8FAF9A] hover:bg-[#7a9985] transition-colors `}
               >
                 Know More
               </motion.button>
@@ -116,11 +112,10 @@ export default function WhyChooseUsCards() {
 
         {/* Mobile Global Button */}
         <div className="mt-10 flex justify-center md:hidden">
-           <button className="bg-[#2A3C2A] text-white px-8 py-3 rounded-full font-medium w-full">
+          <button className="bg-[#2A3C2A] text-white px-8 py-3 rounded-full font-medium w-full">
             Know More
           </button>
         </div>
-
       </div>
     </section>
   );

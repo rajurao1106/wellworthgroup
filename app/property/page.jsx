@@ -198,24 +198,6 @@ const ProjectFilterPage = () => {
                       </span>
                     )}
 
-                    {/* Right Side Hover Icons (Like the e-commerce design) */}
-                    <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
-                      <button className="w-8 h-8 bg-white rounded-sm shadow-sm flex items-center justify-center text-[#1e9653] hover:bg-[#1e9653] hover:text-white transition-colors">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                      </button>
-                      <button className="w-8 h-8 bg-white rounded-sm shadow-sm flex items-center justify-center text-[#1e9653] hover:bg-[#1e9653] hover:text-white transition-colors">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
-                      </button>
-                      <button className="w-8 h-8 bg-white rounded-sm shadow-sm flex items-center justify-center text-[#1e9653] hover:bg-[#1e9653] hover:text-white transition-colors">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                      </button>
-                    </div>
-
-                    {/* Bottom Green Overlay Bar (Adapted to Installments) */}
-                    <div className="absolute bottom-2 left-2 right-2 bg-[#1e9653]/90 backdrop-blur-sm text-white text-xs font-medium py-2 rounded-sm flex items-center justify-center gap-2">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                      0% Interest • Easy Installments
-                    </div>
                   </div>
 
                   {/* Card Content */}

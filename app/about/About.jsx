@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import about from "@/public/homepage/about3.jpg";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -82,9 +83,9 @@ const About = () => {
             </div>
           </div>
 
-          <button className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white font-medium px-8 py-3.5 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg focus:ring-2 focus:ring-[#8FAF9A] focus:ring-offset-2 outline-none">
+          <Link href="/contact" className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white font-medium px-8 py-3.5 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg focus:ring-2 focus:ring-[#8FAF9A] focus:ring-offset-2 outline-none">
             Know More
-          </button>
+          </Link>
         </motion.div>
         
       </div>

@@ -123,20 +123,20 @@ function Card({ item, delay, above }) {
         ${inView ? "opacity-100 translate-y-0" : `opacity-0 ${above ? "translate-y-3" : "-translate-y-3"}`}
         ${
           dark
-            ? "bg-gradient-to-br from-[#1a1a2e] to-[#16213e] border-[1.5px] border-[#B8922A]/50 shadow-[0_6px_24px_rgba(184,146,42,0.2)]"
+            ? "bg-gradient-to-br from-[#1a1a2e] to-[#16213e] border-[1.5px] border-[#8FAF9A]/50 shadow-[0_6px_24px_rgba(184,146,42,0.2)]"
             : "bg-white border border-[#ede8de] shadow-[0_2px_14px_rgba(0,0,0,0.05)]"
         }`}
     >
       {dark && (
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8C84A] to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7a9985] to-transparent" />
       )}
       <span
-        className={`inline-block text-[9px] font-['DM_Sans',sans-serif] font-semibold tracking-[.12em] uppercase py-[2px] px-[7px] rounded mb-1.5 ${dark ? "text-[#E8C84A] bg-[#B8922A]/10" : "text-[#B8922A] bg-[#B8922A]/5"}`}
+        className={`inline-block text-[9px] font-['DM_Sans',sans-serif] font-semibold tracking-[.12em] uppercase py-[2px] px-[7px] rounded mb-1.5 ${dark ? "text-[#7a9985] bg-[#8FAF9A]/10" : "text-[#8FAF9A] bg-[#8FAF9A]/5"}`}
       >
         {item.tag}
       </span>
       <div
-        className={`text-[10px] font-['DM_Mono',monospace] tracking-[.07em] mb-1 ${dark ? "text-[#E8C84A]/70" : "text-[#B8922A]"}`}
+        className={`text-[10px] font-['DM_Mono',monospace] tracking-[.07em] mb-1 ${dark ? "text-[#7a9985]/70" : "text-[#8FAF9A]"}`}
       >
         {item.startYear}
         {item.endYear ? ` — ${item.endYear}` : " — Present"}
@@ -245,9 +245,9 @@ function SShape({ rows, progress = 89 }) {
     >
       <defs>
         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#B8922A" />
-          <stop offset="50%" stopColor="#E8C84A" />
-          <stop offset="100%" stopColor="#B8922A" />
+          <stop offset="0%" stopColor="#8FAF9A" />
+          <stop offset="50%" stopColor="#7a9985" />
+          <stop offset="100%" stopColor="#8FAF9A" />
         </linearGradient>
       </defs>
 
@@ -315,7 +315,7 @@ function SShape({ rows, progress = 89 }) {
             height="30"
             rx="15"
             fill="#1a1a2e"
-            stroke="#B8922A"
+            stroke="#8FAF9A"
             strokeWidth="1.5"
           />
           <text
@@ -406,8 +406,8 @@ function NodeDot({ item, delay }) {
         ${inView ? "scale-100" : "scale-0"}
         ${
           dark
-            ? "w-[44px] h-[44px] bg-gradient-to-br from-[#B8922A] to-[#E8C84A] border-[3px] border-[#E8C84A] shadow-[0_0_0_6px_rgba(184,146,42,.15),0_4px_20px_rgba(184,146,42,.35)]"
-            : "w-[32px] h-[32px] bg-white border-[2.5px] border-[#B8922A] shadow-[0_0_0_4px_rgba(184,146,42,.08)]"
+            ? "w-[44px] h-[44px] bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] border-[3px] border-[#7a9985] shadow-[0_0_0_6px_rgba(184,146,42,.15),0_4px_20px_rgba(184,146,42,.35)]"
+            : "w-[32px] h-[32px] bg-white border-[2.5px] border-[#8FAF9A] shadow-[0_0_0_4px_rgba(184,146,42,.08)]"
         }`}
     >
       {dark ? (
@@ -425,7 +425,7 @@ function NodeDot({ item, delay }) {
           <polyline points="9 22 9 12 15 12 15 22" />
         </svg>
       ) : (
-        <div className="w-[7px] h-[7px] rounded-full bg-[#B8922A]" />
+        <div className="w-[7px] h-[7px] rounded-full bg-[#8FAF9A]" />
       )}
     </div>
   );
@@ -436,11 +436,11 @@ function NodeDot({ item, delay }) {
 function MobileTimeline() {
   return (
     <div className="relative">
-      <div className="absolute left-[18px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#B8922A] via-[#E8C84A] to-[#B8922A] rounded-sm z-[1]" />
+      <div className="absolute left-[18px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#8FAF9A] via-[#7a9985] to-[#8FAF9A] rounded-sm z-[1]" />
 
       <div className="pl-[52px] mb-7 relative z-10">
-        <div className="inline-flex bg-white border-[1.5px] border-[#B8922A] rounded-lg py-2 px-3.5">
-          <span className="font-['DM_Mono',monospace] text-[10px] tracking-[.12em] text-[#B8922A] uppercase font-semibold">
+        <div className="inline-flex bg-white border-[1.5px] border-[#8FAF9A] rounded-lg py-2 px-3.5">
+          <span className="font-['DM_Mono',monospace] text-[10px] tracking-[.12em] text-[#8FAF9A] uppercase font-semibold">
             Journey Begins 1996
           </span>
         </div>
@@ -456,20 +456,20 @@ function MobileTimeline() {
               className={`absolute top-[18px] rounded-full z-10
               ${
                 item.isCurrent
-                  ? "left-[10px] w-[20px] h-[20px] -ml-[2px] bg-gradient-to-br from-[#B8922A] to-[#E8C84A] border-2 border-[#E8C84A]"
-                  : "left-[10px] w-[15px] h-[15px] ml-0 bg-white border-2 border-[#B8922A]"
+                  ? "left-[10px] w-[20px] h-[20px] -ml-[2px] bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] border-2 border-[#7a9985]"
+                  : "left-[10px] w-[15px] h-[15px] ml-0 bg-white border-2 border-[#8FAF9A]"
               }`}
             />
             <div
               className={`w-full rounded-[10px] py-3 px-4 
               ${
                 item.isCurrent
-                  ? "bg-[#1a1a2e] border-[1.5px] border-[#B8922A]/40 shadow-[0_4px_20px_rgba(184,146,42,.2)]"
+                  ? "bg-[#1a1a2e] border-[1.5px] border-[#8FAF9A]/40 shadow-[0_4px_20px_rgba(184,146,42,.2)]"
                   : "bg-white border border-[#ede8de] shadow-[0_2px_10px_rgba(0,0,0,.04)]"
               }`}
             >
               <div
-                className={`text-[10px] font-['DM_Mono',monospace] tracking-[.07em] mb-[3px] ${item.isCurrent ? "text-[#E8C84A]" : "text-[#B8922A]"}`}
+                className={`text-[10px] font-['DM_Mono',monospace] tracking-[.07em] mb-[3px] ${item.isCurrent ? "text-[#7a9985]" : "text-[#8FAF9A]"}`}
               >
                 {item.startYear}
                 {item.endYear ? ` — ${item.endYear}` : " — Present"}
@@ -490,7 +490,7 @@ function MobileTimeline() {
       </div>
 
       <div className="pl-[52px] mt-6 relative z-10">
-        <div className="inline-flex items-center gap-2 bg-gradient-to-br from-[#B8922A] to-[#E8C84A] rounded-lg py-2.5 px-4">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] rounded-lg py-2.5 px-4">
           <svg
             width="12"
             height="12"
@@ -525,14 +525,14 @@ export default function RealEstateTimeline() {
       <section className="bg-[linear-gradient(160deg,#faf8f3_0%,#f5f0e8_50%,#faf8f3_100%)] pt-[72px] px-6 pb-[96px] font-['DM_Sans',sans-serif] overflow-hidden min-h-screen">
         <div className="max-w-[960px] mx-auto">
           <div className="text-center mb-[60px]">
-            <p className="font-['DM_Mono',monospace] text-[11px] tracking-[.25em] uppercase text-[#B8922A] mb-3">
+            <p className="font-['DM_Mono',monospace] text-[11px] tracking-[.25em] uppercase text-[#8FAF9A] mb-3">
               Est. 1996 — Our Legacy
             </p>
             <h2 className="font-['Playfair_Display',serif] text-[clamp(30px,5vw,48px)] font-black text-[#1a1a2e] leading-[1.1] mb-3.5">
               Milestones of{" "}
-              <span className="text-[#B8922A] italic">Excellence</span>
+              <span className="text-[#8FAF9A] italic">Excellence</span>
             </h2>
-            <div className="w-[44px] h-[3px] bg-gradient-to-r from-[#B8922A] to-[#E8C84A] mx-auto mb-3.5 rounded-sm" />
+            <div className="w-[44px] h-[3px] bg-gradient-to-r from-[#8FAF9A] to-[#7a9985] mx-auto mb-3.5 rounded-sm" />
             <p className="text-[13px] text-[#8a7e6e] max-w-[360px] mx-auto leading-[1.7]">
               Nearly three decades of transforming land into landmark
               communities.
@@ -547,7 +547,7 @@ export default function RealEstateTimeline() {
             className="hidden md:flex justify-end mt-4"
             style={{ paddingRight: `${(PAD_X / 960) * 100}%` }}
           >
-            <div className="bg-gradient-to-br from-[#B8922A] to-[#E8C84A] rounded-full py-2.5 px-5 flex items-center gap-2 shadow-[0_6px_24px_rgba(184,146,42,.3)]">
+            <div className="bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] rounded-full py-2.5 px-5 flex items-center gap-2 shadow-[0_6px_24px_rgba(184,146,42,.3)]">
               <svg
                 width="13"
                 height="13"

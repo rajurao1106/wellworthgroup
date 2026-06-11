@@ -65,7 +65,7 @@ const Projects = () => {
         
         <a 
           href="/projects"
-          className="group flex items-center gap-3 bg-slate-900 hover:bg-[#7a9985] text-white px-8 py-4 rounded-none transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide text-sm whitespace-nowrap"
+          className="group flex items-center gap-3 bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-4 rounded-none transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide text-sm whitespace-nowrap"
         >
           View All Projects
           <svg 

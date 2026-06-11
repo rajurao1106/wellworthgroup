@@ -4,10 +4,14 @@ import React from "react";
 import cta2 from "@/public/homepage/cta5.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CTA2() {
   return (
-    <section id="contact" className="relative overflow-hidden min-h-[100dvh] lg:min-h-screen w-full flex items-center py-20 lg:py-12">
+    <section
+      id="contact"
+      className="relative overflow-hidden min-h-[100dvh] lg:min-h-screen w-full flex items-center py-20 lg:py-12"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -26,7 +30,7 @@ export default function CTA2() {
       {/* Content Container */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left Column: Text Content */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -38,29 +42,33 @@ export default function CTA2() {
             <br className="hidden lg:block" /> Book a Site Visit.
           </h1>
           <p className="max-w-xl text-gray-200 text-base md:text-lg">
-            Call us or WhatsApp to get plot pricing, availability, and book a free site visit. 7 days a week. No commitment needed.
+            Call us or WhatsApp to get plot pricing, availability, and book a
+            free site visit. 7 days a week. No commitment needed.
           </p>
-          
+
           {/* Buttons: Stacked on mobile, side-by-side on sm+ screens */}
           <div className="flex flex-col sm:flex-row gap-4 pt-8 w-full sm:w-auto justify-center lg:justify-start">
-            <motion.button 
-              whileTap={{ scale: 0.97 }}
-              className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-colors duration-300 shadow-lg w-full sm:w-auto text-center"
-            >
-              Discover Services
-            </motion.button>
-            <motion.button 
+            <Link href="/property">
+              <motion.button
+                whileTap={{ scale: 0.97 }}
+                className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-colors duration-300 shadow-lg w-full sm:w-auto text-center"
+              >
+                Discover Properties
+              </motion.button>
+            </Link>
+          <Link href="/contact">
+            <motion.button
               whileTap={{ scale: 0.97 }}
               className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-colors duration-300 shadow-lg w-full sm:w-auto text-center"
             >
               Call Now for Pricing
-            </motion.button>
+            </motion.button></Link>
           </div>
         </motion.div>
 
         {/* Right Column: Enquiry Form */}
         <div className="flex justify-center lg:justify-end w-full">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}

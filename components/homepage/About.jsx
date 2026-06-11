@@ -4,6 +4,7 @@ import React from "react";
 import about from "@/public/homepage/about3.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const About3 = () => {
   
@@ -95,9 +96,9 @@ const About3 = () => {
             ))}
           </div>
 
-          <button className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-all duration-300 shadow-lg mt-4">
+          <Link href="/about" className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-all duration-300 shadow-lg mt-4">
             Know More
-          </button>
+          </Link>
         </motion.div>
 
         {/* Note: Masonry Gallery commented out in original logic */}

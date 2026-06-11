@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Whatsapp from "@/components/layout/Whatsapp";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import StickySocials from "@/components/StickySocials";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         {children}
         <Whatsapp />
         <ScrollToTop/>
+        <StickySocials/>
         <Footer />
       </body>
     </html>
