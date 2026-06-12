@@ -6,6 +6,7 @@ import upcoming1 from "@/public/homepage/upcoming1.png";
 import upcoming2 from "@/public/homepage/upcoming2.png";
 import Link from "next/link";
 import project4 from "@/public/homepage/project4.png"
+import upcoming3 from "@/public/homepage/upcoming3.jpeg"
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -36,7 +37,7 @@ const Projects = () => {
       title: "Wellworth Mall",
       subtitle: "Kondagaon",
       badge: "Commercial Hub",
-      image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800",
+      image:upcoming3,
       gridClass: "md:col-span-1 md:row-span-1 min-h-[260px]",
     },
     {

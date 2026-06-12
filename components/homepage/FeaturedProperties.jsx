@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 // 1. Next.js Image component ko import karein
-import Image from "next/image"; 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import project1 from "@/public/homepage/project1.png"
-import project2 from "@/public/homepage/project2.jpg"
-import project3 from "@/public/homepage/project3.jpg"
-import project4 from "@/public/homepage/project4.png"
+import project1 from "@/public/homepage/project1.png";
+import project2 from "@/public/homepage/project2.jpg";
+import project3 from "@/public/homepage/project8.png";
+import project4 from "@/public/homepage/project4.png";
+import project6 from "@/public/homepage/project6.png";
+import project7 from "@/public/homepage/project7.png";
 
 const properties = [
   {
@@ -20,20 +22,10 @@ const properties = [
     title: "VARDHMAN NAGAR",
     details: "Devpuri, Raipur, Chhattisgarh",
     foot: "Residential Township | Premium Bungalows | Gated Security, Wide Roads, Parks, Family Community",
-    image: project1,
+    image: project6,
   },
   {
     id: 2,
-    tag: null,
-    highlight: "COMPLETED PROJECT",
-    priceInfo: "Exclusive Pricing Available",
-    title: "NANESH NAGAR",
-    details: "Bhatagaon, Raipur, Chhattisgarh",
-    foot: "Residential Township | Residential Plots / Homes | Affordable Quality Living for Mid-segment families",
-    image: project2,
-  },
-  {
-    id: 3,
     tag: null,
     highlight: "COMPLETED PROJECT",
     priceInfo: "Call for Best Price",
@@ -43,20 +35,33 @@ const properties = [
     image: project3,
   },
   {
-    id: 4,
+    id: 3,
     tag: null,
     highlight: "COMPLETED PROJECT",
     priceInfo: "Price on Request",
     title: "WELLWORTH CITY",
     details: "Hirapur, Raipur, Chhattisgarh",
     foot: "Integrated Township | Residential Plots & Homes | Large-scale development with community spaces & parks",
-    image: project4,
-  }
+    image: project7,
+  },
+  {
+    id: 4,
+    tag: null,
+    highlight: "COMPLETED PROJECT",
+    priceInfo: "Exclusive Pricing Available",
+    title: "NANESH NAGAR",
+    details: "Bhatagaon, Raipur, Chhattisgarh",
+    foot: "Residential Township | Residential Plots / Homes | Affordable Quality Living for Mid-segment families",
+    image: project2,
+  },
 ];
 
 const PropertyCard = ({ property }) => {
   return (
-    <div id="properties" className="flex flex-col bg-white shadow-sm border border-gray-100 overflow-hidden h-full">
+    <div
+      id="properties"
+      className="flex flex-col bg-white shadow-sm border border-gray-100 overflow-hidden h-full"
+    >
       <div className="relative h-56 w-full">
         {/* 2. img ki jagah Next.js Image component fill attribute ke sath */}
         <Image
@@ -67,7 +72,9 @@ const PropertyCard = ({ property }) => {
           className="object-cover"
         />
         {property.tag && (
-          <div className={`absolute top-4 left-4 ${property.tagColor} text-white text-[10px] tracking-wider font-bold px-3 py-1.5 rounded-sm z-10`}>
+          <div
+            className={`absolute top-4 left-4 ${property.tagColor} text-white text-[10px] tracking-wider font-bold px-3 py-1.5 rounded-sm z-10`}
+          >
             {property.tag}
           </div>
         )}
@@ -113,7 +120,9 @@ export default function FeaturedProperties() {
 
   const prevSlide = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + properties.length) % properties.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + properties.length) % properties.length,
+    );
   };
 
   const handleDotClick = (idx) => {
@@ -122,7 +131,9 @@ export default function FeaturedProperties() {
   };
 
   // responsive layout checks length to avoid errors when data has fewer items than grid columns
-  const displayProperties = properties.map((_, i) => properties[(currentIndex + i) % properties.length]).slice(0, Math.min(3, properties.length));
+  const displayProperties = properties
+    .map((_, i) => properties[(currentIndex + i) % properties.length])
+    .slice(0, Math.min(3, properties.length));
 
   const slideVariants = {
     enter: (dir) => ({
@@ -145,7 +156,8 @@ export default function FeaturedProperties() {
         <div className="flex flex-col px-8 max-lg:px-4 md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
             <h2 className="text-6xl max-lg:text-4xl leading-tight mb-4 font-[Bodoni_Moda] font-semibold text-slate-900 tracking-wide">
-              Our Completed <span className="text-[#7a9985] italic">Projects</span>
+              Our Completed{" "}
+              <span className="text-[#7a9985] italic">Projects</span>
             </h2>
             <p className="text-gray-500 text-base mb-4 font-light">
               Discover our completed premium developments
@@ -165,7 +177,11 @@ export default function FeaturedProperties() {
           </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+            <AnimatePresence
+              mode="popLayout"
+              initial={false}
+              custom={direction}
+            >
               {displayProperties.map((property, index) => (
                 <motion.div
                   key={`${property.id}-${currentIndex}-${index}`}

@@ -4,9 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import rajendra from "@/public/about/rajendra.jpg"
-import devendra from "@/public/about/devendra.jpeg"
+import rishabh from "@/public/about/devendra.jpeg"
 import dinesh from "@/public/about/dinesh.jpeg"
-import rishabh from "@/public/about/rishabh.jpeg"
+import devendra from "@/public/about/rishabh.jpeg"
 import akash from "@/public/about/akash.png"
 
 const teamData = [
