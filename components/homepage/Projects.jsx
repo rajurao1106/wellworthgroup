@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import upcoming1 from "@/public/homepage/upcoming1.png";
 import upcoming2 from "@/public/homepage/upcoming2.png";
 import Link from "next/link";
+import project4 from "@/public/homepage/project4.png"
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -17,10 +19,10 @@ const Projects = () => {
       gridClass: "md:col-span-2 md:row-span-2 min-h-[420px]",
     },
     {
-      title: "Wellworth Height",
+      title: "Wellworth apartment 1",
       subtitle: "Kamal Vihar",
       badge: "Luxury Living",
-      image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=800",
+      image: project4,
       gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
     },
     {
