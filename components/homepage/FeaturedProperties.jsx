@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+// 1. Next.js Image component ko import karein
+import Image from "next/image"; 
 import { motion, AnimatePresence } from "framer-motion";
 import project1 from "@/public/homepage/project1.png"
 import project2 from "@/public/homepage/project2.jpg"
 import project3 from "@/public/homepage/project3.jpg"
 import project4 from "@/public/homepage/project4.png"
-import project5 from "@/public/homepage/project5.png"
 
 const properties = [
   {
@@ -18,7 +19,7 @@ const properties = [
     priceInfo: "Price on Request",
     title: "VARDHMAN NAGAR",
     details: "Devpuri, Raipur, Chhattisgarh",
-    foot: "Premium Plots",
+    foot: "Residential Township | Premium Bungalows | Gated Security, Wide Roads, Parks, Family Community",
     image: project1,
   },
   {
@@ -26,9 +27,9 @@ const properties = [
     tag: null,
     highlight: "COMPLETED PROJECT",
     priceInfo: "Exclusive Pricing Available",
-    title: "NANES NAGAR",
-    details: "Bhatagaon, Raipur",
-    foot: "Residential Area",
+    title: "NANESH NAGAR",
+    details: "Bhatagaon, Raipur, Chhattisgarh",
+    foot: "Residential Township | Residential Plots / Homes | Affordable Quality Living for Mid-segment families",
     image: project2,
   },
   {
@@ -37,8 +38,8 @@ const properties = [
     highlight: "COMPLETED PROJECT",
     priceInfo: "Call for Best Price",
     title: "ARIHANT VIHAR",
-    details: "Dunda, Raipur",
-    foot: "Residential Plots",
+    details: "Dunda, Raipur, Chhattisgarh",
+    foot: "Residential Township | Residential Plots / Villas | Developed roads, drainage, electrification",
     image: project3,
   },
   {
@@ -47,64 +48,9 @@ const properties = [
     highlight: "COMPLETED PROJECT",
     priceInfo: "Price on Request",
     title: "WELLWORTH CITY",
-    details: "Hirapur, Raipur",
-    foot: "Township Project",
+    details: "Hirapur, Raipur, Chhattisgarh",
+    foot: "Integrated Township | Residential Plots & Homes | Large-scale development with community spaces & parks",
     image: project4,
-  },
-  {
-    id: 5,
-    tag: "UPCOMING",
-    tagColor: "bg-blue-700",
-    highlight: "UPCOMING PROJECT",
-    priceInfo: "Booking Opening Soon",
-    title: "SHANTIKUNJ PHASE 1 & 2",
-    details: "Raipur",
-    foot: "New Launch",
-    image: project5,
-  },
-  {
-    id: 6,
-    tag: "UPCOMING",
-    tagColor: "bg-blue-700",
-    highlight: "UPCOMING PROJECT",
-    priceInfo: "Exclusive Launch",
-    title: "WELLWORTH HEIGHT KAMAL VIHAR",
-    details: "Kamal Vihar, Raipur",
-    foot: "Modern Apartments",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 7,
-    tag: "UPCOMING",
-    tagColor: "bg-blue-700",
-    highlight: "UPCOMING PROJECT",
-    priceInfo: "Price on Request",
-    title: "WELLWORTH TOWER DEVPURI",
-    details: "Devpuri, Raipur",
-    foot: "Premium Residency",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 8,
-    tag: "COMMERCIAL",
-    tagColor: "bg-purple-700",
-    highlight: "UPCOMING COMMERCIAL",
-    priceInfo: "Express Interest",
-    title: "WELLWORTH MALL",
-    details: "Kondagaon",
-    foot: "Commercial Spaces",
-    image: "https://images.unsplash.com/photo-1477322524744-0eece9e79f40?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 9,
-    tag: "MEGA PROJECT",
-    tagColor: "bg-green-700",
-    highlight: "28.50 ACRE RESIDENTIAL PROJECT",
-    priceInfo: "Pre-Launch Offers",
-    title: "ACACIA PREMIUM RESIDENTIAL PROJECT",
-    details: "Raipur",
-    foot: "28.50 Acre Township",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800",
   }
 ];
 
@@ -112,13 +58,16 @@ const PropertyCard = ({ property }) => {
   return (
     <div id="properties" className="flex flex-col bg-white shadow-sm border border-gray-100 overflow-hidden h-full">
       <div className="relative h-56 w-full">
-        <img
+        {/* 2. img ki jagah Next.js Image component fill attribute ke sath */}
+        <Image
           src={property.image}
           alt={property.title}
-          className="w-full h-full object-cover"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
         />
         {property.tag && (
-          <div className={`absolute top-4 left-4 ${property.tagColor} text-white text-[10px] tracking-wider font-bold px-3 py-1.5 rounded-sm`}>
+          <div className={`absolute top-4 left-4 ${property.tagColor} text-white text-[10px] tracking-wider font-bold px-3 py-1.5 rounded-sm z-10`}>
             {property.tag}
           </div>
         )}
@@ -172,11 +121,8 @@ export default function FeaturedProperties() {
     setCurrentIndex(idx);
   };
 
-  const displayProperties = [
-    properties[currentIndex],
-    properties[(currentIndex + 1) % properties.length],
-    properties[(currentIndex + 2) % properties.length],
-  ];
+  // responsive layout checks length to avoid errors when data has fewer items than grid columns
+  const displayProperties = properties.map((_, i) => properties[(currentIndex + i) % properties.length]).slice(0, Math.min(3, properties.length));
 
   const slideVariants = {
     enter: (dir) => ({
@@ -199,10 +145,10 @@ export default function FeaturedProperties() {
         <div className="flex flex-col px-8 max-lg:px-4 md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
             <h2 className="text-6xl max-lg:text-4xl leading-tight mb-4 font-[Bodoni_Moda] font-semibold text-slate-900 tracking-wide">
-              Our <span className="text-[#7a9985] italic">Projects</span>
+              Our Completed <span className="text-[#7a9985] italic">Projects</span>
             </h2>
             <p className="text-gray-500 text-base mb-4 font-light">
-              Discover our completed and upcoming premium developments
+              Discover our completed premium developments
             </p>
           </div>
           <button className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-all duration-300 shadow-lg">

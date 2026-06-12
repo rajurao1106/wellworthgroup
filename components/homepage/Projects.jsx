@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import upcoming1 from "@/public/homepage/upcoming1.png";
+import upcoming2 from "@/public/homepage/upcoming2.png";
+import Link from "next/link";
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -11,7 +13,7 @@ const Projects = () => {
       title: "Shantikunj",
       subtitle: "Phase 1 & 2",
       badge: "Premium Enclave",
-      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200",
+      image:upcoming2,
       gridClass: "md:col-span-2 md:row-span-2 min-h-[420px]",
     },
     {
@@ -39,7 +41,7 @@ const Projects = () => {
       title: "ACACIA",
       subtitle: "Premium Residential Project",
       badge: "28.50 Acres Grandeur",
-      image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=800",
+      image: upcoming1, // Next.js StaticImageData Object
       gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
     },
   ];
@@ -82,50 +84,55 @@ const Projects = () => {
 
       {/* Modern Bento Grid Layout */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-auto">
-        {projectsData.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: index * 0.1, ease: [0.215, 0.610, 0.355, 1.000] }}
-            onClick={() => setSelectedProject(item)}
-            className={`group relative overflow-hidden bg-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer border border-slate-100 ${item.gridClass}`}
-          >
-            {/* Soft Ambient Shadow Layer inside Card */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent z-10 opacity-70 group-hover:opacity-85 transition-opacity duration-500" />
-            
-            {/* Top Badge Overlay */}
-            <div className="absolute top-4 left-4 z-20">
-              <span className="text-[10px] font-bold tracking-widest uppercase bg-white/90 backdrop-blur-sm text-slate-900 px-3 py-1.5 shadow-sm">
-                {item.badge}
-              </span>
-            </div>
+        {projectsData.map((item, index) => {
+          // Resolve string URL out of static image objects safely
+          const resolvedSrc = typeof item.image === "object" ? item.image.src : item.image;
 
-            {/* Smooth Scale Zoom Image */}
-            <motion.img
-              src={item.image}
-              alt={`${item.title} ${item.subtitle}`}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-              className="w-full h-full object-cover absolute inset-0"
-              loading="lazy"
-            />
-
-            {/* Micro-Interactive Title Component */}
-            <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-20 flex flex-col justify-end h-1/2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-              <h3 className="text-white text-2xl md:text-3xl font-semibold font-[Bodoni_Moda] tracking-wide mb-1">
-                {item.title}
-              </h3>
-              <p className="text-slate-300 font-light text-sm tracking-wide opacity-90 transition-opacity duration-300 group-hover:opacity-100">
-                {item.subtitle}
-              </p>
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.215, 0.61, 0.355, 1.0] }}
+              onClick={() => setSelectedProject(item)}
+              className={`group relative overflow-hidden bg-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer border border-slate-100 ${item.gridClass}`}
+            >
+              {/* Soft Ambient Shadow Layer inside Card */}
+              <Link href={"/property"} className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent z-10 opacity-70 group-hover:opacity-85 transition-opacity duration-500" />
               
-              {/* Animated reveal hint */}
-              <div className="w-0 group-hover:w-12 h-[2px] bg-[#8FAF9A] mt-4 transition-all duration-500 ease-out" />
-            </div>
-          </motion.div>
-        ))}
+              {/* Top Badge Overlay */}
+              <div className="absolute top-4 left-4 z-20">
+                <span className="text-[10px] font-bold tracking-widest uppercase bg-white/90 backdrop-blur-sm text-slate-900 px-3 py-1.5 shadow-sm">
+                  {item.badge}
+                </span>
+              </div>
+
+              {/* Smooth Scale Zoom Image */}
+              <motion.img
+                src={resolvedSrc}
+                alt={`${item.title} ${item.subtitle}`}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                className="w-full h-full object-cover absolute inset-0"
+                loading="lazy"
+              />
+
+              {/* Micro-Interactive Title Component */}
+              <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-20 flex flex-col justify-end h-1/2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="text-white text-2xl md:text-3xl font-semibold font-[Bodoni_Moda] tracking-wide mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-slate-300 font-light text-sm tracking-wide opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                  {item.subtitle}
+                </p>
+                
+                {/* Animated reveal hint */}
+                <div className="w-0 group-hover:w-12 h-[2px] bg-[#8FAF9A] mt-4 transition-all duration-500 ease-out" />
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* --- Elevated Glassmorphic Lightbox Modal --- */}
@@ -153,12 +160,12 @@ const Projects = () => {
             {/* Immersive Image Canvas Container */}
             <div className="relative max-w-5xl max-h-[75vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
               <motion.img
-                key={selectedProject.image}
+                key={typeof selectedProject.image === "object" ? selectedProject.image.src : selectedProject.image}
                 initial={{ scale: 0.96, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.96, opacity: 0 }}
                 transition={{ type: "spring", damping: 28, stiffness: 260 }}
-                src={selectedProject.image}
+                src={typeof selectedProject.image === "object" ? selectedProject.image.src : selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-full object-contain max-h-[75vh]"
               />

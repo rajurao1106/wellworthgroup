@@ -46,7 +46,7 @@ const StickySocials = () => {
   ];
 
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 items-end">
+    <div className="fixed -right-2 max-lg:right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 items-end">
       {/* Social Media Links */}
       {socials.map((social, index) => (
         <a
