@@ -86,11 +86,12 @@ const timelineEvents = [
   },
 ];
 
-// ─── helpers ──────────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function useInView() {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -101,7 +102,7 @@ function useInView() {
           obs.disconnect();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.15 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -109,45 +110,51 @@ function useInView() {
   return [ref, inView];
 }
 
-// ─── Card ─────────────────────────────────────────────────────────────────────
+// ─── Card Component ───────────────────────────────────────────────────────────
 
 function Card({ item, delay, above }) {
   const [ref, inView] = useInView();
-  const dark = item.isCurrent;
+  const isDark = item.isCurrent;
 
   return (
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`relative overflow-hidden w-full rounded-[10px] py-3 px-4 transition-all duration-500 ease-in-out
-        ${inView ? "opacity-100 translate-y-0" : `opacity-0 ${above ? "translate-y-3" : "-translate-y-3"}`}
+      className={`group relative overflow-hidden w-full rounded-2xl p-5 transition-all duration-700 ease-out backdrop-blur-sm transform hover:-translate-y-1 cursor-default
+        ${inView ? "opacity-100 translate-y-0" : `opacity-0 ${above ? "translate-y-6" : "-translate-y-6"}`}
         ${
-          dark
-            ? "bg-gradient-to-br from-[#1a1a2e] to-[#16213e] border-[1.5px] border-[#8FAF9A]/50 shadow-[0_6px_24px_rgba(184,146,42,0.2)]"
-            : "bg-white border border-[#ede8de] shadow-[0_2px_14px_rgba(0,0,0,0.05)]"
+          isDark
+            ? "bg-gradient-to-br from-[#111827] via-[#1e293b] to-[#0f172a] border border-[#8FAF9A]/40 shadow-[0_12px_40px_rgba(143,175,154,0.15)] hover:shadow-[0_20px_50px_rgba(143,175,154,0.25)]"
+            : "bg-white/90 border border-[#ede8de] shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.08)]"
         }`}
     >
-      {dark && (
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7a9985] to-transparent" />
+      {isDark && (
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#8FAF9A] to-transparent animate-pulse" />
       )}
+      
       <span
-        className={`inline-block text-[9px] font-['DM_Sans',sans-serif] font-semibold tracking-[.12em] uppercase py-[2px] px-[7px] rounded mb-1.5 ${dark ? "text-[#7a9985] bg-[#8FAF9A]/10" : "text-[#8FAF9A] bg-[#8FAF9A]/5"}`}
+        className={`inline-block text-[10px] font-['DM_Sans',sans-serif] font-bold tracking-[0.15em] uppercase py-1 px-2.5 rounded-full mb-3 transition-colors duration-300
+          ${isDark ? "text-[#8FAF9A] bg-[#8FAF9A]/10 group-hover:bg-[#8FAF9A]/20" : "text-[#7a9985] bg-[#7a9985]/5 group-hover:bg-[#7a9985]/10"}`}
       >
         {item.tag}
       </span>
+
       <div
-        className={`text-[10px] font-['DM_Mono',monospace] tracking-[.07em] mb-1 ${dark ? "text-[#7a9985]/70" : "text-[#8FAF9A]"}`}
+        className={`text-[11px] font-['DM_Mono',monospace] font-medium tracking-wider mb-1.5 ${isDark ? "text-[#8FAF9A]/80" : "text-[#7a9985]"}`}
       >
         {item.startYear}
         {item.endYear ? ` — ${item.endYear}` : " — Present"}
       </div>
+
       <h3
-        className={`font-['Playfair_Display',serif] text-[12px] font-bold leading-[1.3] mb-1 ${dark ? "text-white" : "text-[#1a1a2e]"}`}
+        className={`font-['Playfair_Display',serif] text-[15px] font-bold leading-tight mb-2 tracking-wide transition-colors duration-300
+          ${isDark ? "text-white group-hover:text-[#8FAF9A]" : "text-[#1a1a2e] group-hover:text-[#7a9985]"}`}
       >
         {item.title}
       </h3>
+
       <p
-        className={`text-[11px] font-['DM_Sans',sans-serif] leading-[1.5] m-0 ${dark ? "text-white/50" : "text-[#8a7060]"}`}
+        className={`text-[12px] font-['DM_Sans',sans-serif] leading-relaxed transition-opacity duration-300 ${isDark ? "text-slate-400 group-hover:text-slate-300" : "text-stone-500"}`}
       >
         {item.description}
       </p>
@@ -155,18 +162,17 @@ function Card({ item, delay, above }) {
   );
 }
 
-// ─── S-Curve Desktop ──────────────────────────────────────────────────────────
+// ─── S-Curve Desktop Path & Logic ─────────────────────────────────────────────
 
 const COLS = 3;
-const ROW_H = 220; // px height of each row (node strip + card space)
-const PAD_X = 48; // px indent from left / right edge before path starts
+const ROW_H = 240; 
+const PAD_X = 64; 
 
-function SShape({ rows, progress = 89 }) {
+function SShape({ rows, progress }) {
   const W = 900;
   const nodeY = ROW_H / 2;
   const colX = (col) => PAD_X + col * ((W - 2 * PAD_X) / (COLS - 1));
 
-  // 1. D Path (S-Curve) Build Karein
   let d = `M ${colX(0)} ${nodeY}`;
   rows.forEach((row, ri) => {
     const isEven = ri % 2 === 0;
@@ -181,17 +187,13 @@ function SShape({ rows, progress = 89 }) {
     }
   });
 
-  // 2. Path ki total mathematically length calculate karein
   const horizontalLen = colX(COLS - 1) - colX(0);
   const r = ROW_H / 2;
   const arcLen = Math.PI * r;
   const totalLen = rows.length * horizontalLen + (rows.length - 1) * arcLen;
 
-  // 3. Progress ke anusar Tooltip & Arrow ki Exact (X, Y) coordinate aur Rotation
   let curr = totalLen * (progress / 100);
-  let px = colX(0),
-    py = nodeY,
-    angle = 0;
+  let px = colX(0), py = nodeY, angle = 0;
 
   for (let ri = 0; ri < rows.length; ri++) {
     const isEven = ri % 2 === 0;
@@ -231,12 +233,6 @@ function SShape({ rows, progress = 89 }) {
   const totalH = rows.length * ROW_H;
   const strokeOffset = totalLen - totalLen * (progress / 100);
 
-  const startX = colX(0);
-  const startY = nodeY;
-  const lastRowEven = (rows.length - 1) % 2 === 0;
-  const endX = lastRowEven ? colX(COLS - 1) : colX(0);
-  const endY = (rows.length - 1) * ROW_H + nodeY;
-
   return (
     <svg
       viewBox={`0 0 ${W} ${totalH}`}
@@ -246,110 +242,60 @@ function SShape({ rows, progress = 89 }) {
       <defs>
         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#8FAF9A" />
-          <stop offset="50%" stopColor="#7a9985" />
-          <stop offset="100%" stopColor="#8FAF9A" />
+          <stop offset="50%" stopColor="#b2c9bb" />
+          <stop offset="100%" stopColor="#7a9985" />
         </linearGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
       </defs>
 
-      {/* Background Track (Faded Line) */}
       <path
         d={d}
         fill="none"
-        stroke="#ede8de"
-        strokeWidth="6"
+        stroke="#e6dfd3"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
 
-      {/* Golden Progress Line */}
       <path
         d={d}
         fill="none"
         stroke="url(#goldGrad)"
-        strokeWidth="6"
+        strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeDasharray={totalLen}
         strokeDashoffset={strokeOffset}
-        className="transition-all duration-1000 ease-out"
+        className="transition-all duration-300 ease-out"
       />
 
-      {/* Start Label */}
-      <circle cx={startX} cy={startY} r="6" fill="#1a1a2e" />
-      <text
-        x={startX}
-        y={startY - 18}
-        fill="#1a1a2e"
-        fontSize="14"
-        fontWeight="600"
-        textAnchor="middle"
-        fontFamily="'DM Sans', sans-serif"
-      >
-        Start
-      </text>
-
-      {/* End Label */}
-      <circle cx={endX} cy={endY} r="6" fill="#1a1a2e" />
-      <text
-        x={endX}
-        y={endY + 28}
-        fill="#1a1a2e"
-        fontSize="14"
-        fontWeight="600"
-        textAnchor="middle"
-        fontFamily="'DM Sans', sans-serif"
-      >
-        End
-      </text>
-
-      {/* Dynamic Progress Indicator Tooltip */}
-      <g transform={`translate(${px}, ${py})`} className="pointer-events-auto">
+      <g transform={`translate(${px}, ${py})`} className="transition-all duration-300 ease-out">
+        <circle r="10" fill="#1a1a2e" filter="url(#glow)" />
+        <circle r="5" fill="#8FAF9A" />
         <g transform={`rotate(${angle})`}>
-          <path d="M -8 -6 L 8 0 L -8 6 L -3 0 Z" fill="#1a1a2e" />
-        </g>
-        <g transform="translate(0, -32)">
-          <rect
-            x="-60"
-            y="-15"
-            width="120"
-            height="30"
-            rx="15"
-            fill="#1a1a2e"
-            stroke="#8FAF9A"
-            strokeWidth="1.5"
-          />
-          <text
-            x="0"
-            y="4"
-            fill="#fff"
-            fontSize="12"
-            fontWeight="600"
-            textAnchor="middle"
-            fontFamily="'DM Sans', sans-serif"
-          >
-            Progress: {progress}%
-          </text>
+          <path d="M -14 -4 L -6 0 L -14 4 Z" fill="#8FAF9A" />
         </g>
       </g>
     </svg>
   );
 }
 
-function DesktopSCurve() {
+function DesktopSCurve({ progress }) {
   const rows = [];
   for (let i = 0; i < timelineEvents.length; i += COLS) {
     rows.push(timelineEvents.slice(i, i + COLS));
   }
 
   const W = 900;
-  const colXPct = (col) =>
-    ((PAD_X + col * ((W - 2 * PAD_X) / (COLS - 1))) / W) * 100;
-
+  const colXPct = (col) => ((PAD_X + col * ((W - 2 * PAD_X) / (COLS - 1))) / W) * 100;
   const totalH = rows.length * ROW_H;
 
   return (
     <div className="relative w-full" style={{ height: `${totalH}px` }}>
-      <SShape rows={rows} progress={89} />
+      <SShape rows={rows} progress={progress} />
 
       {rows.map((row, ri) => {
         const isEven = ri % 2 === 0;
@@ -365,27 +311,17 @@ function DesktopSCurve() {
           return (
             <div
               key={item.id}
-              className="absolute flex flex-col items-center justify-center z-[5] max-w-[240px] -translate-x-1/2"
+              className="absolute flex flex-col items-center justify-center z-[5] -translate-x-1/2"
               style={{
                 left: `${leftPct}%`,
                 top: `${topPx}px`,
-                width: `${((W - 2 * PAD_X) / (COLS - 1)) * 0.82}px`,
+                width: `${((W - 2 * PAD_X) / (COLS - 1)) * 0.88}px`,
                 height: `${ROW_H}px`,
               }}
             >
-              {above ? (
-                <>
-                  <div className="w-full mb-2">
-                    <Card item={item} delay={absIdx * 70} above={true} />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="w-full mt-2">
-                    <Card item={item} delay={absIdx * 70} above={false} />
-                  </div>
-                </>
-              )}
+              <div className="w-full transition-transform duration-300 hover:scale-[1.02]">
+                <Card item={item} delay={ci * 100} above={above} />
+              </div>
             </div>
           );
         });
@@ -394,181 +330,114 @@ function DesktopSCurve() {
   );
 }
 
-function NodeDot({ item, delay }) {
-  const [ref, inView] = useInView();
-  const dark = item.isCurrent;
-
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay + 80}ms` }}
-      className={`flex items-center justify-center shrink-0 rounded-full z-10 transition-transform duration-[450ms] ease-[cubic-bezier(.34,1.56,.64,1)]
-        ${inView ? "scale-100" : "scale-0"}
-        ${
-          dark
-            ? "w-[44px] h-[44px] bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] border-[3px] border-[#7a9985] shadow-[0_0_0_6px_rgba(184,146,42,.15),0_4px_20px_rgba(184,146,42,.35)]"
-            : "w-[32px] h-[32px] bg-white border-[2.5px] border-[#8FAF9A] shadow-[0_0_0_4px_rgba(184,146,42,.08)]"
-        }`}
-    >
-      {dark ? (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#1a1a2e"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
-        </svg>
-      ) : (
-        <div className="w-[7px] h-[7px] rounded-full bg-[#8FAF9A]" />
-      )}
-    </div>
-  );
-}
-
-// ─── Mobile vertical ──────────────────────────────────────────────────────────
+// ─── Mobile Timeline Component ────────────────────────────────────────────────
 
 function MobileTimeline() {
   return (
-    <div className="relative">
-      <div className="absolute left-[18px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#8FAF9A] via-[#7a9985] to-[#8FAF9A] rounded-sm z-[1]" />
+    <div className="relative pl-6">
+      <div className="absolute left-2 top-2 bottom-2 w-[3px] bg-gradient-to-b from-[#8FAF9A] via-[#ede8de] to-[#7a9985] rounded-full" />
 
-      <div className="pl-[52px] mb-7 relative z-10">
-        <div className="inline-flex bg-white border-[1.5px] border-[#8FAF9A] rounded-lg py-2 px-3.5">
-          <span className="font-['DM_Mono',monospace] text-[10px] tracking-[.12em] text-[#8FAF9A] uppercase font-semibold">
-            Journey Begins 1996
-          </span>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-5 relative z-[5]">
-        {timelineEvents.map((item) => (
-          <div
-            key={`m-${item.id}`}
-            className="flex items-start pl-[52px] relative"
-          >
+      <div className="flex flex-col gap-8">
+        {timelineEvents.map((item, idx) => (
+          <div key={`m-${item.id}`} className="relative flex flex-col items-start">
             <div
-              className={`absolute top-[18px] rounded-full z-10
+              className={`absolute -left-[22px] top-6 rounded-full border-4 border-[#fbf9f5] z-10 transition-all duration-500
               ${
                 item.isCurrent
-                  ? "left-[10px] w-[20px] h-[20px] -ml-[2px] bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] border-2 border-[#7a9985]"
-                  : "left-[10px] w-[15px] h-[15px] ml-0 bg-white border-2 border-[#8FAF9A]"
+                  ? "w-5 h-5 bg-[#8FAF9A] shadow-[0_0_0_4px_rgba(143,175,154,0.2)] scale-110"
+                  : "w-4 h-4 bg-stone-300"
               }`}
             />
-            <div
-              className={`w-full rounded-[10px] py-3 px-4 
-              ${
-                item.isCurrent
-                  ? "bg-[#1a1a2e] border-[1.5px] border-[#8FAF9A]/40 shadow-[0_4px_20px_rgba(184,146,42,.2)]"
-                  : "bg-white border border-[#ede8de] shadow-[0_2px_10px_rgba(0,0,0,.04)]"
-              }`}
-            >
-              <div
-                className={`text-[10px] font-['DM_Mono',monospace] tracking-[.07em] mb-[3px] ${item.isCurrent ? "text-[#7a9985]" : "text-[#8FAF9A]"}`}
-              >
-                {item.startYear}
-                {item.endYear ? ` — ${item.endYear}` : " — Present"}
-              </div>
-              <h3
-                className={`font-['Playfair_Display',serif] text-[13px] font-bold leading-[1.3] mb-[3px] ${item.isCurrent ? "text-white" : "text-[#1a1a2e]"}`}
-              >
-                {item.title}
-              </h3>
-              <p
-                className={`text-[11px] font-['DM_Sans',sans-serif] ${item.isCurrent ? "text-white/50" : "text-[#8a7060]"}`}
-              >
-                {item.description}
-              </p>
+            <div className="w-full">
+              <Card item={item} delay={idx * 50} above={true} />
             </div>
           </div>
         ))}
       </div>
-
-      <div className="pl-[52px] mt-6 relative z-10">
-        <div className="inline-flex items-center gap-2 bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] rounded-lg py-2.5 px-4">
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1a1a2e"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-          <span className="font-['DM_Mono',monospace] text-[10px] tracking-[.1em] text-[#1a1a2e] font-semibold uppercase">
-            Your Future Home
-          </span>
-        </div>
-      </div>
     </div>
   );
 }
 
-// ─── Root ─────────────────────────────────────────────────────────────────────
+// ─── Main Root Component ─────────────────────────────────────────────────────
 
 export default function RealEstateTimeline() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const viewHeight = window.innerHeight;
+      
+      // Calculate how much of the timeline container has passed through the view frame
+      const totalTrack = rect.height - viewHeight / 2;
+      const currentTrack = -rect.top + viewHeight / 2;
+      
+      const pct = Math.min(Math.max((currentTrack / totalTrack) * 100, 0), 100);
+      setScrollProgress(pct);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
       `}</style>
 
-      <section className="bg-[linear-gradient(160deg,#faf8f3_0%,#f5f0e8_50%,#faf8f3_100%)] pt-[72px] px-6 pb-[96px] font-['DM_Sans',sans-serif] overflow-hidden min-h-screen">
-        <div className="max-w-[960px] mx-auto">
-          <div className="text-center mb-[60px]">
-            <p className="font-['DM_Mono',monospace] text-[11px] tracking-[.25em] uppercase text-[#8FAF9A] mb-3">
-              Est. 1996 — Our Legacy
+      <section 
+        ref={containerRef}
+        className="bg-gradient-to-b from-[#fbf9f5] via-[#f5efe4] to-[#fbf9f5] pt-24 px-4 pb-32 font-['DM_Sans',sans-serif] min-h-screen overflow-hidden"
+      >
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-20 space-y-4">
+            <p className="font-['DM_Mono',monospace] text-xs tracking-[0.3em] uppercase text-[#7a9985] font-semibold">
+              Est. 1996 — Our Legacy Journey
             </p>
-            <h2 className="font-['Playfair_Display',serif] text-[clamp(30px,5vw,48px)] font-black text-[#1a1a2e] leading-[1.1] mb-3.5">
-              Milestones of{" "}
-              <span className="text-[#8FAF9A] italic">Excellence</span>
+            <h2 className="font-['Playfair_Display',serif] text-[clamp(2.25rem,6vw,3.5rem)] font-black text-[#1a1a2e] leading-tight">
+              Milestones of <span className="text-[#8FAF9A] italic font-normal">Excellence</span>
             </h2>
-            <div className="w-[44px] h-[3px] bg-gradient-to-r from-[#8FAF9A] to-[#7a9985] mx-auto mb-3.5 rounded-sm" />
-            <p className="text-[13px] text-[#8a7e6e] max-w-[360px] mx-auto leading-[1.7]">
-              Nearly three decades of transforming land into landmark
-              communities.
+            <div className="w-16 h-[3px] bg-gradient-to-r from-[#8FAF9A] to-[#7a9985] mx-auto rounded-full" />
+            <p className="text-[15px] text-stone-600 max-w-md mx-auto leading-relaxed">
+              Nearly three decades of master planning pristine spaces and transforming land into premium landmark communities.
             </p>
           </div>
 
-          <div className="hidden md:block">
-            <DesktopSCurve />
+          {/* Desktop Timeline Display */}
+          <div className="hidden md:block px-4">
+            <DesktopSCurve progress={scrollProgress} />
           </div>
 
-          <div
-            className="hidden md:flex justify-end mt-4"
-            style={{ paddingRight: `${(PAD_X / 960) * 100}%` }}
-          >
-            <div className="bg-gradient-to-br from-[#8FAF9A] to-[#7a9985] rounded-full py-2.5 px-5 flex items-center gap-2 shadow-[0_6px_24px_rgba(184,146,42,.3)]">
+          {/* Mobile Timeline Display */}
+          <div className="block md:hidden max-w-md mx-auto">
+            <MobileTimeline />
+          </div>
+
+          {/* Call-to-Action Footer Accent */}
+          <div className="flex justify-center mt-20">
+            <div className="group bg-gradient-to-br from-[#111827] to-[#1e293b] text-white rounded-full py-3.5 px-8 flex items-center gap-3 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 border border-[#8FAF9A]/30">
               <svg
-                width="13"
-                height="13"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#1a1a2e"
+                stroke="#8FAF9A"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="group-hover:scale-110 transition-transform duration-300"
               >
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
-              <span className="font-['DM_Mono',monospace] text-[10px] tracking-[.15em] text-[#1a1a2e] font-semibold uppercase">
+              <span className="font-['DM_Mono',monospace] text-xs tracking-widest font-bold uppercase text-stone-200 group-hover:text-white transition-colors duration-300">
                 Your Future Home Awaits
               </span>
             </div>
-          </div>
-
-          <div className="block md:hidden">
-            <MobileTimeline />
           </div>
         </div>
       </section>
