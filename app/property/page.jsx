@@ -2,7 +2,12 @@
 
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Image from "next/image"; // Imported standard Next.js Image component
+import project1 from "@/public/homepage/project1.png"
+import project2 from "@/public/homepage/project2.jpg"
+import project3 from "@/public/homepage/project3.jpg"
+import project4 from "@/public/homepage/project4.png"
+  
 // --- Authentic Portfolio Data Injection ---
 const projectData = [
   // ==========================================
@@ -15,7 +20,7 @@ const projectData = [
     status: "Completed", 
     price: 0, // Price on request
     size: "Premium Bungalows", 
-    image: "/projects/vardhman.jpg", 
+    image: project1, 
     isNew: false, 
     featured: true 
   },
@@ -26,7 +31,7 @@ const projectData = [
     status: "Completed", 
     price: 0, // Exclusive pricing
     size: "Plots / Homes", 
-    image: "/projects/nanes.jpg", 
+    image: project2, 
     isNew: false, 
     featured: false 
   },
@@ -37,7 +42,7 @@ const projectData = [
     status: "Completed", 
     price: 0, 
     size: "Plots / Villas", 
-    image: "/projects/arihant.jpg", 
+    image: project3, 
     isNew: false, 
     featured: true 
   },
@@ -48,7 +53,7 @@ const projectData = [
     status: "Completed", 
     price: 0, 
     size: "Integrated Township", 
-    image: "/projects/city.jpg", 
+    image: project4, 
     isNew: false, 
     featured: false 
   },
@@ -282,13 +287,26 @@ const ProjectFilterPage = () => {
                 >
                   {/* Card Image Area */}
                   <div className="relative h-56 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                    <div className="absolute inset-0 bg-[#eef5f0] flex items-center justify-center text-gray-300">
+                    {/* Fallback Icon Container if Image fails to parse (Maintained structural style) */}
+                    <div className="absolute inset-0 bg-[#eef5f0] flex items-center justify-center text-gray-300 z-0">
                        <svg className="w-16 h-16 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                     </div>
 
+                    {/* Integrated Next.js Image component mapping accurately to your mixed source patterns */}
+                    {project.image && (
+                      <Image 
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300 z-10"
+                        priority={project.featured}
+                      />
+                    )}
+
                     {/* New/Running Badge */}
                     {project.isNew && (
-                      <span className="absolute top-3 left-3 bg-[#e3c77a] text-white text-[10px] font-bold px-2 py-1 tracking-wider rounded-sm shadow-sm z-10 uppercase">
+                      <span className="absolute top-3 left-3 bg-[#e3c77a] text-white text-[10px] font-bold px-2 py-1 tracking-wider rounded-sm shadow-sm z-20 uppercase">
                         {project.status}
                       </span>
                     )}
