@@ -14,7 +14,7 @@ import project6 from "@/public/homepage/project6.png";
 import upcoming1 from "@/public/homepage/upcoming1.png";
 import upcoming2 from "@/public/homepage/upcoming2.png";
 import upcoming3 from "@/public/homepage/upcoming3.jpeg";
-import upcoming4 from "@/public/homepage/upcoming4.png";
+import upcoming4 from "@/public/gallery/sejbaharacacia4.png";
 import project9 from "@/public/homepage/project9.png";
 import project7 from "@/public/homepage/project7.png";
 
@@ -29,7 +29,7 @@ const projectData = [
   { id: 6, title: "Wellworth Apartment 1", location: "Devpuri (Near Kamal Vihar)", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: project7, isNew: true, featured: false },
   { id: 7, title: "Acacia - Sejbahar", location: "Sejbahar, Raipur", status: "Running", price: 0, size: "Premium Villas/Plots", image: upcoming1, isNew: true, featured: true },
   { id: 8, title: "Shantikunj Farm House", location: "Chhachhanpairi, Raipur", status: "Running", price: 0, size: "Farm House Plots", image: upcoming2, isNew: true, featured: false },
-  // { id: 9, title: "Wellworth Apartment 2", location: "Kamal Vihar, Raipur", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: upcoming4, isNew: true, featured: true },
+  { id: 9, title: "Wellworth Apartment 2", location: "Kamal Vihar, Raipur", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: upcoming4, isNew: true, featured: true },
 ];
 
 const SortOptions = [
