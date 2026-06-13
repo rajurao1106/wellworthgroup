@@ -28,10 +28,10 @@ const Projects = () => {
       gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
     },
     {
-      title: "Wellworth Tower",
-      subtitle: "Devpuri",
-      badge: "High Rise Residences",
-      image: project9,
+     title: "ACACIA",
+      subtitle: "Premium Residential Project",
+      badge: "28.50 Acres Grandeur",
+      image: upcoming1,
       gridClass: "md:col-span-1 md:row-span-1 min-h-[260px]",
     },
     {
@@ -41,13 +41,7 @@ const Projects = () => {
       image:upcoming3,
       gridClass: "md:col-span-1 md:row-span-1 min-h-[260px]",
     },
-    {
-      title: "ACACIA",
-      subtitle: "Premium Residential Project",
-      badge: "28.50 Acres Grandeur",
-      image: upcoming1, // Next.js StaticImageData Object
-      gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
-    },
+ 
   ];
 
   return (
