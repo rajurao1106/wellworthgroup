@@ -167,7 +167,7 @@ const Footer = () => {
           © {new Date().getFullYear()} Wellworth Group. All rights reserved.
         </p>
         <p className="mt-4 md:mt-0 uppercase tracking-[0.15em] font-medium text-[10px]">
-          Design and Developed By Zerogravityweb
+          Design and Developed By <a href="https://zerogravityweb.diginote.in/">Zerogravityweb</a> 
         </p>
       </div>
     </footer>
