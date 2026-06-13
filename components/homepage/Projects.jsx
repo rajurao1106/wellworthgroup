@@ -8,7 +8,6 @@ import Link from "next/link";
 import project4 from "@/public/homepage/project4.png"
 import upcoming3 from "@/public/homepage/upcoming3.jpeg"
 import project9 from "@/public/homepage/project9.png"
-import upcoming4 from "@/public/gallery/wellworthapartment1.png";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -22,10 +21,10 @@ const Projects = () => {
       gridClass: "md:col-span-2 md:row-span-2 min-h-[420px]",
     },
     {
-      title: "Wellworth apartment 1",
+      title: "Wellworth apartment 2",
       subtitle: "Kamal Vihar",
       badge: "Luxury Living",
-      image: upcoming4,
+      image: project4,
       gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
     },
     {
