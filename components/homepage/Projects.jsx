@@ -7,7 +7,6 @@ import upcoming2 from "@/public/homepage/upcoming2.png";
 import Link from "next/link";
 import project4 from "@/public/homepage/project4.png"
 import upcoming3 from "@/public/homepage/upcoming3.jpeg"
-import project9 from "@/public/homepage/project9.png"
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -28,10 +27,10 @@ const Projects = () => {
       gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
     },
     {
-     title: "ACACIA",
-      subtitle: "Premium Residential Project",
-      badge: "28.50 Acres Grandeur",
-      image: upcoming1,
+      title: "Wellworth Tower",
+      subtitle: "Devpuri",
+      badge: "High Rise Residences",
+      image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1200",
       gridClass: "md:col-span-1 md:row-span-1 min-h-[260px]",
     },
     {
@@ -41,7 +40,13 @@ const Projects = () => {
       image:upcoming3,
       gridClass: "md:col-span-1 md:row-span-1 min-h-[260px]",
     },
- 
+    {
+      title: "ACACIA",
+      subtitle: "Premium Residential Project",
+      badge: "28.50 Acres Grandeur",
+      image: upcoming1, // Next.js StaticImageData Object
+      gridClass: "md:col-span-2 md:row-span-1 min-h-[260px]",
+    },
   ];
 
   return (
