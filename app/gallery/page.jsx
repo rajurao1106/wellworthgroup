@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-// Imports - Assuming these are correctly paths from your file structure
+// Imports
 import ashtvinaykshantikunj1 from "@/public/gallery/ashtvinaykshantikunj1.jpeg";
 import ashtvinaykshantikunj2 from "@/public/gallery/ashtvinaykshantikunj2.jpeg";
 import ashtvinaykshantikunj3 from "@/public/gallery/ashtvinaykshantikunj3.jpeg";
@@ -23,184 +23,41 @@ import vardhmannagardevpuri2 from "@/public/gallery/vardhmannagardevpuri2.png";
 import vardhmannagardevpuri3 from "@/public/gallery/vardhmannagardevpuri3.png";
 import wellworthapartment1 from "@/public/gallery/wellworthapartment1.png";
 import wellworthapartment2 from "@/public/gallery/wellworthapartment2.png";
+import sejbaharacacia1 from "@/public/gallery/sejbaharacacia1.png";
+import sejbaharacacia2 from "@/public/gallery/sejbaharacacia2.png";
+import sejbaharacacia3 from "@/public/gallery/sejbaharacacia3.png";
+import sejbaharacacia4 from "@/public/gallery/sejbaharacacia4.png";
+import sejbaharacacia5 from "@/public/gallery/sejbaharacacia5.png";
 
 const mediaData = [
-  {
-    id: 1,
-    type: "image",
-    category: "Projects",
-    src: ashtvinaykshantikunj1,
-    alt: "Ashtvinayk Shantikunj",
-    title: "Ashtvinayk Shantikunj",
-  },
-  {
-    id: 2,
-    type: "image",
-    category: "Projects",
-    src: ashtvinaykshantikunj2,
-    alt: "Ashtvinayk Shantikunj",
-    title: "Ashtvinayk Shantikunj",
-  },
-  {
-    id: 3,
-    type: "image",
-    category: "Projects",
-    src: ashtvinaykshantikunj3,
-    alt: "Ashtvinayk Shantikunj",
-    title: "Ashtvinayk Shantikunj",
-  },
-  {
-    id: 4,
-    type: "image",
-    category: "Projects",
-    src: ashtvinaykshantikunj4,
-    alt: "Ashtvinayk Shantikunj",
-    title: "Ashtvinayk Shantikunj",
-  },
-  {
-    id: 5,
-    type: "image",
-    category: "Projects",
-    src: ashtvinaykshantikunj5,
-    alt: "Ashtvinayk Shantikunj",
-    title: "Ashtvinayk Shantikunj",
-  },
-  {
-    id: 6,
-    type: "image",
-    category: "Projects",
-    src: ashtvinaykshantikunj6,
-    alt: "Ashtvinayk Shantikunj",
-    title: "Ashtvinayk Shantikunj",
-  },
-  {
-    id: 7,
-    type: "image",
-    category: "Projects",
-    src: bhatagaonnaneshnagar1,
-    alt: "Nanesh Nagar",
-    title: "Nanesh Nagar",
-  },
-  {
-    id: 8,
-    type: "image",
-    category: "Projects",
-    src: bhatagaonnaneshnagar2,
-    alt: "Nanesh Nagar",
-    title: "Nanesh Nagar",
-  },
-  {
-    id: 9,
-    type: "image",
-    category: "Projects",
-    src: dundaarihantvihar1,
-    alt: "Arihant Vihar",
-    title: "Arihant Vihar",
-  },
-  {
-    id: 10,
-    type: "image",
-    category: "Projects",
-    src: dundaarihantvihar2,
-    alt: "Arihant Vihar",
-    title: "Arihant Vihar",
-  },
-  {
-    id: 11,
-    type: "image",
-    category: "Projects",
-    src: hirapurplot1,
-    alt: "Hirapur Plots",
-    title: "Hirapur Plots",
-  },
-  {
-    id: 12,
-    type: "image",
-    category: "Projects",
-    src: hirapurplot2,
-    alt: "Hirapur Plots",
-    title: "Hirapur Plots",
-  },
-  {
-    id: 13,
-    type: "image",
-    category: "Projects",
-    src: hirapurplot3,
-    alt: "Hirapur Plots",
-    title: "Hirapur Plots",
-  },
-  {
-    id: 14,
-    type: "image",
-    category: "Projects",
-    src: hirapurplot4,
-    alt: "Hirapur Plots",
-    title: "Hirapur Plots",
-  },
-  {
-    id: 15,
-    type: "image",
-    category: "Projects",
-    src: hirapurplot5,
-    alt: "Hirapur Plots",
-    title: "Hirapur Plots",
-  },
-  {
-    id: 16,
-    type: "image",
-    category: "Projects",
-    src: vardhmannagardevpuri1,
-    alt: "Vardhman Nagar",
-    title: "Vardhman Nagar",
-  },
-  {
-    id: 17,
-    type: "image",
-    category: "Projects",
-    src: vardhmannagardevpuri2,
-    alt: "Vardhman Nagar",
-    title: "Vardhman Nagar",
-  },
-  {
-    id: 18,
-    type: "image",
-    category: "Projects",
-    src: vardhmannagardevpuri3,
-    alt: "Vardhman Nagar",
-    title: "Vardhman Nagar",
-  },
-  {
-    id: 19,
-    type: "image",
-    category: "Projects",
-    src: wellworthapartment1,
-    alt: "Wellworth Apartment",
-    title: "Wellworth Apartment",
-  },
-  {
-    id: 20,
-    type: "image",
-    category: "Projects",
-    src: wellworthapartment2,
-    alt: "Wellworth Apartment",
-    title: "Wellworth Apartment",
-  },
-  {
-    id: 21,
-    type: "video",
-    category: "Videos",
-    src: "https://res.cloudinary.com/dphkugrbz/video/upload/v1781181083/RAIPUR-Mall_1_j9szwr.mp4",
-    alt: "Site Walkthrough",
-    title: "Site Walkthrough",
-  },
-  {
-    id: 22,
-    type: "video",
-    category: "Videos",
-    src: "https://res.cloudinary.com/dphkugrbz/video/upload/v1781181055/Well_Worth_Apartments_Imlidih_Main_Road_Deopuri_Raipur_%EF%B8%8F_9039010310_-_FUSION_INFRA_RAIPUR_480p_h264_ckpkpx.mp4",
-    alt: "Site Walkthrough",
-    title: "Site Walkthrough",
-  },
+  { id: 1, type: "image", category: "Projects", src: ashtvinaykshantikunj1, alt: "Ashtvinayk Shantikunj", title: "Ashtvinayk Shantikunj" },
+  { id: 2, type: "image", category: "Projects", src: ashtvinaykshantikunj2, alt: "Ashtvinayk Shantikunj", title: "Ashtvinayk Shantikunj" },
+  { id: 3, type: "image", category: "Projects", src: ashtvinaykshantikunj3, alt: "Ashtvinayk Shantikunj", title: "Ashtvinayk Shantikunj" },
+  { id: 4, type: "image", category: "Projects", src: ashtvinaykshantikunj4, alt: "Ashtvinayk Shantikunj", title: "Ashtvinayk Shantikunj" },
+  { id: 5, type: "image", category: "Projects", src: ashtvinaykshantikunj5, alt: "Ashtvinayk Shantikunj", title: "Ashtvinayk Shantikunj" },
+  { id: 6, type: "image", category: "Projects", src: ashtvinaykshantikunj6, alt: "Ashtvinayk Shantikunj", title: "Ashtvinayk Shantikunj" },
+  { id: 7, type: "image", category: "Projects", src: bhatagaonnaneshnagar1, alt: "Nanesh Nagar", title: "Nanesh Nagar" },
+  { id: 8, type: "image", category: "Projects", src: bhatagaonnaneshnagar2, alt: "Nanesh Nagar", title: "Nanesh Nagar" },
+  { id: 9, type: "image", category: "Projects", src: dundaarihantvihar1, alt: "Arihant Vihar", title: "Arihant Vihar" },
+  { id: 10, type: "image", category: "Projects", src: dundaarihantvihar2, alt: "Arihant Vihar", title: "Arihant Vihar" },
+  { id: 11, type: "image", category: "Projects", src: hirapurplot1, alt: "Hirapur Plots", title: "Hirapur Plots" },
+  { id: 12, type: "image", category: "Projects", src: hirapurplot2, alt: "Hirapur Plots", title: "Hirapur Plots" },
+  { id: 13, type: "image", category: "Projects", src: hirapurplot3, alt: "Hirapur Plots", title: "Hirapur Plots" },
+  { id: 14, type: "image", category: "Projects", src: hirapurplot4, alt: "Hirapur Plots", title: "Hirapur Plots" },
+  { id: 15, type: "image", category: "Projects", src: hirapurplot5, alt: "Hirapur Plots", title: "Hirapur Plots" },
+  { id: 16, type: "image", category: "Projects", src: vardhmannagardevpuri1, alt: "Vardhman Nagar", title: "Vardhman Nagar" },
+  { id: 17, type: "image", category: "Projects", src: vardhmannagardevpuri2, alt: "Vardhman Nagar", title: "Vardhman Nagar" },
+  { id: 18, type: "image", category: "Projects", src: vardhmannagardevpuri3, alt: "Vardhman Nagar", title: "Vardhman Nagar" },
+  { id: 19, type: "image", category: "Projects", src: wellworthapartment1, alt: "Wellworth Apartment", title: "Wellworth Apartment" },
+  { id: 20, type: "image", category: "Projects", src: wellworthapartment2, alt: "Wellworth Apartment", title: "Wellworth Apartment" },
+  // Sejbahar Acacia added below
+  { id: 21, type: "image", category: "Projects", src: sejbaharacacia1, alt: "Sejbahar Acacia", title: "Sejbahar Acacia" },
+  { id: 22, type: "image", category: "Projects", src: sejbaharacacia2, alt: "Sejbahar Acacia", title: "Sejbahar Acacia" },
+  { id: 23, type: "image", category: "Projects", src: sejbaharacacia3, alt: "Sejbahar Acacia", title: "Sejbahar Acacia" },
+  { id: 24, type: "image", category: "Projects", src: sejbaharacacia4, alt: "Sejbahar Acacia", title: "Sejbahar Acacia" },
+  { id: 25, type: "image", category: "Projects", src: sejbaharacacia5, alt: "Sejbahar Acacia", title: "Sejbahar Acacia" },
+  { id: 26, type: "video", category: "Videos", src: "https://res.cloudinary.com/dphkugrbz/video/upload/v1781181083/RAIPUR-Mall_1_j9szwr.mp4", alt: "Site Walkthrough", title: "Site Walkthrough" },
+  { id: 27, type: "video", category: "Videos", src: "https://res.cloudinary.com/dphkugrbz/video/upload/v1781181055/Well_Worth_Apartments_Imlidih_Main_Road_Deopuri_Raipur_%EF%B8%8F_9039010310_-_FUSION_INFRA_RAIPUR_480p_h264_ckpkpx.mp4", alt: "Site Walkthrough", title: "Site Walkthrough" },
 ];
 
 const categories = ["All", "Projects", "Videos"];
@@ -216,19 +73,14 @@ export default function GalleryPage() {
   return (
     <section className="py-20 lg:pt-30 bg-white">
       <div className="container mx-auto px-4">
-        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-            Our Gallery
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Our Gallery</h2>
           <div className="w-20 h-1.5 bg-[#8FAF9A] mx-auto rounded-full mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Explore our premium collection of residential plots and modern
-            apartments in prime locations.{" "}
+            Explore our premium collection of residential plots and modern apartments in prime locations.
           </p>
         </div>
 
-        {/* Filter Tabs */}
         <div className="flex justify-center gap-4 mb-16">
           {categories.map((cat) => (
             <button
@@ -245,7 +97,6 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredMedia.map((item) => (
             <div
@@ -254,11 +105,7 @@ export default function GalleryPage() {
             >
               <div className="relative overflow-hidden rounded-2xl h-72 bg-gray-100">
                 {item.type === "video" ? (
-                  <video
-                    src={item.src}
-                    controls
-                    className="w-full h-full object-cover"
-                  />
+                  <video src={item.src} controls className="w-full h-full object-cover" />
                 ) : (
                   <Image
                     src={item.src}
