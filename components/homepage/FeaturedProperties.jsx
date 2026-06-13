@@ -171,37 +171,45 @@ export default function FeaturedProperties() {
 
         <div className="relative">
           <button
-    onClick={prevSlide}
-    className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-12 z-50 bg-white p-2 md:p-3 rounded-full shadow-md border border-gray-100 text-[#2b3964] hover:bg-[#f07b46] hover:text-white transition-all cursor-pointer"
-  >
-    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-  </button>
+            onClick={prevSlide}
+            className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-12 z-10 bg-white p-2 md:p-3 rounded-full shadow-md border border-gray-100 text-[#2b3964] hover:bg-[#f07b46] hover:text-white transition-all"
+          >
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
-    <AnimatePresence mode="popLayout" initial={false} custom={direction}>
-      {displayProperties.map((property, index) => (
-        <motion.div
-          key={`${property.id}-${currentIndex}`} // Key change: simplify key
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="h-full"
-        >
-          <PropertyCard property={property} />
-        </motion.div>
-      ))}
-    </AnimatePresence>
-  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimatePresence
+              mode="popLayout"
+              initial={false}
+              custom={direction}
+            >
+              {displayProperties.map((property, index) => (
+                <motion.div
+                  key={`${property.id}-${currentIndex}-${index}`}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className={`
+                    ${index > 0 ? "hidden md:block" : "block"} 
+                    ${index > 1 ? "md:hidden lg:block" : ""}
+                    h-full
+                  `}
+                >
+                  <PropertyCard property={property} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
 
-  <button
-    onClick={nextSlide}
-    className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-12 z-50 bg-white p-2 md:p-3 rounded-full shadow-md border border-gray-100 text-[#2b3964] hover:bg-[#f07b46] hover:text-white transition-all cursor-pointer"
-  >
-    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-  </button>
+          <button
+            onClick={nextSlide}
+            className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-12 z-10 bg-white p-2 md:p-3 rounded-full shadow-md border border-gray-100 text-[#2b3964] hover:bg-[#f07b46] hover:text-white transition-all"
+          >
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
         </div>
 
         <div className="flex justify-center items-center gap-2 mt-10">

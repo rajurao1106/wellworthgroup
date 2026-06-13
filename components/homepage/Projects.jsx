@@ -63,8 +63,8 @@ const Projects = () => {
           </p>
         </div>
         
-        <a 
-          href="/projects"
+        <Link
+          href="/property"
           className="group flex items-center gap-3 bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-4 rounded-none transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide text-sm whitespace-nowrap"
         >
           View All Projects
@@ -77,11 +77,11 @@ const Projects = () => {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
-        </a>
+        </Link>
       </div>
 
       {/* Modern Bento Grid Layout */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-auto">
+      <Link href={"/property"} className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-auto">
         {projectsData.map((item, index) => {
           // Resolve string URL out of static image objects safely
           const resolvedSrc = typeof item.image === "object" ? item.image.src : item.image;
@@ -131,7 +131,7 @@ const Projects = () => {
             </motion.div>
           );
         })}
-      </div>
+      </Link>
 
       {/* --- Elevated Glassmorphic Lightbox Modal --- */}
       <AnimatePresence>

@@ -60,17 +60,7 @@ export default function WhyChooseUsCards() {
             </motion.p>
           </div>
 
-          <Link href="/contact">
-            <motion.button
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden md:block bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 rounded-full font-medium transition-colors"
-            >
-              Know More
-            </motion.button>
-          </Link>
+         
         </div>
 
         {/* Cards Grid */}
