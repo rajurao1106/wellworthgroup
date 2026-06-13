@@ -164,7 +164,7 @@ export default function FeaturedProperties() {
               Discover our completed premium developments
             </p>
           </div>
-          <Link  href={"/property"} className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-all duration-300 shadow-lg">
+          <Link href={"/property"} className="bg-[#8FAF9A] hover:bg-[#7a9985] text-white px-8 py-3 transition-all duration-300 shadow-lg">
             View All
           </Link>
         </div>
