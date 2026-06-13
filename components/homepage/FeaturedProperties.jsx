@@ -22,7 +22,7 @@ const properties = [
     title: "VARDHMAN NAGAR",
     details: "Devpuri, Raipur, Chhattisgarh",
     foot: "Residential Township | Premium Bungalows | Gated Security, Wide Roads, Parks, Family Community",
-    image: project6,
+    image: project1,
   },
   {
     id: 2,
