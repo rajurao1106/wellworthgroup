@@ -9,7 +9,7 @@ import Link from "next/link";
 import project1 from "@/public/homepage/project1.png";
 import project2 from "@/public/homepage/project2.jpg";
 import project3 from "@/public/homepage/project3.jpg";
-import project4 from "@/public/homepage/project4.png";
+import project4 from "@/public/gallery/hirapurplot1.png";
 import project6 from "@/public/homepage/project6.png";
 import upcoming1 from "@/public/homepage/upcoming1.png";
 import upcoming2 from "@/public/homepage/upcoming2.png";
