@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"; 
 // 1. Next.js Image component ko import karein
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";

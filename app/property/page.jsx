@@ -10,22 +10,26 @@ import project1 from "@/public/homepage/project1.png";
 import project2 from "@/public/homepage/project2.jpg";
 import project3 from "@/public/homepage/project3.jpg";
 import project4 from "@/public/homepage/project4.png";
+import project6 from "@/public/homepage/project6.png";
 import upcoming1 from "@/public/homepage/upcoming1.png";
 import upcoming2 from "@/public/homepage/upcoming2.png";
 import upcoming3 from "@/public/homepage/upcoming3.jpeg";
 import upcoming4 from "@/public/homepage/upcoming4.png";
+import project9 from "@/public/homepage/project9.png";
+import project7 from "@/public/homepage/project7.png";
+
 
 // --- Authentic Portfolio Data ---
 const projectData = [
-  { id: 1, title: "Vardhman Nagar", location: "Devpuri, Raipur", status: "Completed", price: 0, size: "Premium Bungalows", image: project1, isNew: false, featured: true },
-  { id: 2, title: "Nanesh Nagar", location: "Bhatagaon, Raipur", status: "Completed", price: 0, size: "Plots / Homes", image: project2, isNew: false, featured: false },
+  { id: 1, title: "Vardhman Nagar", location: "Devpuri, Raipur", status: "Completed", price: 0, size: "Premium Bungalows", image: project6, isNew: false, featured: true },
+  { id: 2, title: "Nanesh Nagar", location: "Bhatagaon, Raipur", status: "Completed", price: 0, size: "Plots / Homes", image: project9, isNew: false, featured: false },
   { id: 3, title: "Arihant Vihar", location: "Dunda, Raipur", status: "Completed", price: 0, size: "Plots / Villas", image: project3, isNew: false, featured: true },
   { id: 4, title: "Wellworth City", location: "Hirapur, Raipur", status: "Completed", price: 0, size: "Integrated Township", image: project4, isNew: false, featured: false },
   { id: 5, title: "Ashtavinayak Shantikunj", location: "Chhachhanpairi & Saloni", status: "Running", price: 0, size: "Premium Township", image: upcoming2, isNew: true, featured: true },
-  { id: 6, title: "Wellworth Apartment 1", location: "Devpuri (Near Kamal Vihar)", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: project4, isNew: true, featured: false },
+  { id: 6, title: "Wellworth Apartment 1", location: "Devpuri (Near Kamal Vihar)", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: project7, isNew: true, featured: false },
   { id: 7, title: "Acacia - Sejbahar", location: "Sejbahar, Raipur", status: "Running", price: 0, size: "Premium Villas/Plots", image: upcoming1, isNew: true, featured: true },
-  { id: 8, title: "Shantikunj Farm House", location: "Chhachhanpairi, Raipur", status: "Running", price: 0, size: "Farm House Plots", image: upcoming3, isNew: true, featured: false },
-  { id: 9, title: "Wellworth Apartment 2", location: "Kamal Vihar, Raipur", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: upcoming4, isNew: true, featured: true },
+  { id: 8, title: "Shantikunj Farm House", location: "Chhachhanpairi, Raipur", status: "Running", price: 0, size: "Farm House Plots", image: upcoming2, isNew: true, featured: false },
+  // { id: 9, title: "Wellworth Apartment 2", location: "Kamal Vihar, Raipur", status: "Running", price: 0, size: "2 & 3 BHK Flats", image: upcoming4, isNew: true, featured: true },
 ];
 
 const SortOptions = [
