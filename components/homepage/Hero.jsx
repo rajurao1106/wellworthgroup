@@ -98,7 +98,7 @@ export default function Hero() {
             className="mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             {/* Primary Action */}
-            <Link href="/properties" className="w-full sm:w-auto">
+            <Link href="/property" className="w-full sm:w-auto">
               <span className="block bg-[#8FAF9A] hover:bg-[#7a9985] text-zinc-950 font-semibold px-8 py-4 rounded-md transition-all duration-300 shadow-xl shadow-[#8FAF9A]/10 hover:shadow-[#8FAF9A]/20 text-center cursor-pointer">
                 Discover Properties
               </span>
