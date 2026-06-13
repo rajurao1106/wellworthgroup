@@ -128,7 +128,7 @@ const Footer = () => {
           <div className="flex flex-col gap-4 text-[14px]">
             {/* Branch Address */}
             <p className="leading-relaxed">
-              <strong>Branch Office:</strong>
+              <strong>Corporate Office:</strong>
               <br />
               3018 Currency Tower, Third Floor,
               <br />
