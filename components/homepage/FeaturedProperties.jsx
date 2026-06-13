@@ -12,6 +12,7 @@ import project3 from "@/public/homepage/project8.png";
 import project4 from "@/public/homepage/project4.png";
 import project6 from "@/public/homepage/project6.png";
 import project7 from "@/public/homepage/project7.png";
+import project9 from "@/public/homepage/project9.png";
 
 const properties = [
   {
@@ -39,8 +40,8 @@ const properties = [
     tag: null,
     highlight: "COMPLETED PROJECT",
     priceInfo: "Price on Request",
-    title: "WELLWORTH CITY",
-    details: "Hirapur, Raipur, Chhattisgarh",
+    title: "Wellworth Apartment 1",
+    details: "Devpuri, Raipur, Chhattisgarh",
     foot: "Integrated Township | Residential Plots & Homes | Large-scale development with community spaces & parks",
     image: project7,
   },
@@ -52,7 +53,7 @@ const properties = [
     title: "NANESH NAGAR",
     details: "Bhatagaon, Raipur, Chhattisgarh",
     foot: "Residential Township | Residential Plots / Homes | Affordable Quality Living for Mid-segment families",
-    image: project2,
+    image: project9,
   },
 ];
 
